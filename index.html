@@ -4,16 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>+Cultura</title>
-    <link rel="stylesheet" href="./styles/global.css" />
+    <link rel="stylesheet" href="./public/styles/global.css" />
   </head>
   <body>
-    <h1>+Cultura</h1>
-    <div>
-      <h2 id="title"></h2>
-      <br />
-      <p id="desc"></p>
-      <br />
-      <p id="data"></p>
+    <form>
+      <input type="text" id="titulo" placeholder="Adicione o titulo" />
+      <input type="text" id="descricao" placeholder="Adicione a descricao" />
+      <select id="categoria">
+        <option value="teatro">Teatro</option>
+        <option value="workshop">Workshop</option>
+        <option value="esporte">Esporte</option>
+        <option value="Show">Show</option>
+      </select>
+      <input type="date" id="date" placeholder="Adicione a data" />
+      <input type="text" id="endereco" placeholder="Adicione o endereco" />
+      <button type="submit" id="formButton">Criar evento</button>
+    </form>
+    <div id="events_container">
+      <button id="buttonEvents">Listar Eventos</button>
+      <ul id="events"></ul>
     </div>
   </body>
 

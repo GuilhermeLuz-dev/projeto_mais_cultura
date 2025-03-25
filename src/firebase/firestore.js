@@ -3,8 +3,16 @@ import { getDocs, addDoc, collection, query, where } from "firebase/firestore";
 
 const eventsRef = collection(db, "eventos");
 
-const searchEvents = async () => {
-  const querySnapshot = await getDocs(eventsRef);
+// Função que pode retornar todos os eventos ou apenas eventos por categoria.
+const searchEvents = async (category) => {
+  let querySnapshot = {};
+  if (category) {
+    const q = query(eventsRef, where("categoria", "==", category));
+    querySnapshot = await getDocs(q);
+  } else {
+    querySnapshot = await getDocs(eventsRef);
+  }
+
   const data = [];
   querySnapshot.forEach((doc) => {
     data.push(doc.data());
@@ -13,15 +21,7 @@ const searchEvents = async () => {
   return data;
 };
 
-const searchEventsByCategory = async (category) => {
-  const q = query(eventsRef, where("categoria", "==", category));
-  const querySnapshot = await getDocs(q);
-
-  querySnapshot.forEach((doc) => {
-    console.log(doc.data());
-  });
-};
-
+// Função que adiciona um novo evento
 const addNewEvent = async (event) => {
   try {
     const docRef = await addDoc(eventsRef, event);
@@ -31,4 +31,4 @@ const addNewEvent = async (event) => {
   }
 };
 
-export { searchEvents, searchEventsByCategory, addNewEvent };
+export { searchEvents, addNewEvent };

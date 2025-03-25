@@ -1,8 +1,6 @@
-import {
-  searchEvents,
-  searchEventsByCategory,
-  addNewEvent,
-} from "./firebase/firestore";
+import { searchEvents, addNewEvent } from "./firebase/firestore";
+
+const buttonEvent = document.getElementById("buttonEvents");
 
 // Listando TODOS os eventos existentes
 const listAllEvents = async () => {
@@ -37,9 +35,12 @@ const listAllEvents = async () => {
   });
 };
 
-const buttonEvent = document.getElementById("buttonEvents");
+// Listando eventos por categoria
 
-buttonEvent.addEventListener("click", listAllEvents);
+const listEventsByCategory = async () => {
+  const data = await searchEvents("esporte");
+  console.log(data);
+};
 
 // Adicionando novo evento
 formButton.addEventListener("click", (event) => {
@@ -63,3 +64,6 @@ formButton.addEventListener("click", (event) => {
   console.log(newEvent);
   addNewEvent(newEvent);
 });
+
+buttonEvent.addEventListener("click", listAllEvents);
+listEventsByCategory();

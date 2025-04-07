@@ -42,28 +42,5 @@ const listEventsByCategory = async () => {
   console.log(data);
 };
 
-// Adicionando novo evento
-formButton.addEventListener("click", (event) => {
-  event.preventDefault();
-
-  const tituloValue = document.getElementById("titulo").value;
-  const descricaoValue = document.getElementById("descricao").value;
-  const categoriaValue = document.getElementById("categoria").value;
-  const dateValue = document.getElementById("date").value;
-  const enderecoValue = document.getElementById("endereco").value;
-  const formButton = document.getElementById("formButton");
-
-  const newEvent = {
-    titulo: tituloValue,
-    descricao: descricaoValue,
-    categoria: categoriaValue,
-    data: dateValue,
-    endereco: enderecoValue,
-  };
-
-  console.log(newEvent);
-  addNewEvent(newEvent);
-});
-
 buttonEvent.addEventListener("click", listAllEvents);
 listEventsByCategory();

@@ -37,10 +37,7 @@ const singIn = (email, password) => {
     .then((userCredential) => {
       const user = userCredential.user;
       console.log(
-        "Usuário logado com sucesso!!!" +
-          "\n" +
-          " Olá " +
-          userCredential.user.displayName
+        "Usuário logado com sucesso!!!" + "\n" + " Olá " + user.displayName
       );
     })
     .catch((error) => {
@@ -52,14 +49,51 @@ const singIn = (email, password) => {
 // Autenticação pela conta do Google;
 const loginWithGoogle = (e) => {
   e.preventDefault();
+  e.target.id === "button_login_google"
+    ? handleSignInWithGoogle()
+    : handleSignUpWithGoogle();
+};
+
+// Função para fazer login com o Google
+const handleSignInWithGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const user = result.user;
-      addNewUser({
-        nome: user.displayName,
-        celular: user.phoneNumber,
-        uid: user.uid,
+      getUserData(user.uid).then((userData) => {
+        if (userData.length === 0) {
+          logout();
+          user.delete();
+          alert("Usuário não cadastrado, faça o cadastro!");
+        } else {
+          alert("Bem vindo de volta " + user.displayName);
+        }
+      });
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      console.log(errorMessage);
+    });
+};
+
+// Função para fazer cadastro com o Google
+const handleSignUpWithGoogle = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const user = result.user;
+      getUserData(user.uid).then((userData) => {
+        if (userData.length === 0) {
+          addNewUser({
+            nome: user.displayName,
+            celular: user.phoneNumber,
+            uid: user.uid,
+          });
+          console.log("Usuário criado com sucesso");
+        } else {
+          alert("Já existe um usuário com esse email, faça o login!");
+          logout();
+        }
       });
     })
     .catch((error) => {

@@ -5,6 +5,16 @@ import { getDocs, addDoc, collection, query, where } from "firebase/firestore";
 const eventsRef = collection(db, "eventos");
 const usersRef = collection(db, "usuarios");
 
+// Função que adiciona um novo evento
+const addNewEvent = async (event) => {
+  try {
+    const docRef = await addDoc(eventsRef, event);
+    console.log(`Novo evento adicionado com sucesso: ${docRef.id}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // Função que pode retornar todos os eventos ou apenas eventos por categoria.
 const searchEvents = async (category) => {
   let querySnapshot = {};
@@ -21,16 +31,6 @@ const searchEvents = async (category) => {
   });
 
   return data;
-};
-
-// Função que adiciona um novo evento
-const addNewEvent = async (event) => {
-  try {
-    const docRef = await addDoc(eventsRef, event);
-    console.log(`Novo evento adicionado com sucesso: ${docRef.id}`);
-  } catch (error) {
-    console.error(error);
-  }
 };
 
 // Função que adiciona dados de novo usuário

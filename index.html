@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="./public/styles/home.css" />
   </head>
   <body>
-    <button><a href="./public/addEvent.html">Criar novo evento</a></button>
+    <button id="btnCreateEvent">
+      <a href="./public/addEvent.html">Criar novo evento</a>
+    </button>
     <br />
     <button><a href="./public/login.html">Sing In or Sing out</a></button>
-
+    <button id="btnLogout">Sair</button>
+    <button id="currentUser">Pegar usuário atual</button>
     <div id="events_container">
       <button id="buttonEvents">Listar Eventos</button>
       <ul id="events"></ul>

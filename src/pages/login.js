@@ -38,7 +38,3 @@ document
 document
   .getElementById("button_login_google")
   .addEventListener("click", loginWithGoogle);
-
-document.getElementById("currentUser").addEventListener("click", getUserState);
-
-document.getElementById("btnLogout").addEventListener("click", logout);

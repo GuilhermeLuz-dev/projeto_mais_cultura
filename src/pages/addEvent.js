@@ -1,8 +1,11 @@
 import { addNewEvent } from "../firebase/firestore";
+import { getImageUrl } from "../supabase/supabaseclient";
+import { getUserState } from "../firebase/auth";
+
+const formButton = document.getElementById("formButton");
 
 // Adicionando novo evento
-const formButton = document.getElementById("formButton");
-formButton.addEventListener("click", (event) => {
+formButton.addEventListener("click", async (event) => {
   event.preventDefault();
 
   const tituloValue = document.getElementById("titulo").value;
@@ -10,13 +13,18 @@ formButton.addEventListener("click", (event) => {
   const categoriaValue = document.getElementById("categoria").value;
   const dateValue = document.getElementById("date").value;
   const enderecoValue = document.getElementById("endereco").value;
-
+  const fileInput = document.getElementById("fileInput");
+  const url = await getImageUrl(fileInput.files[0]);
+  const userUID = await getUserState();
+  console.log(url);
   const newEvent = {
     titulo: tituloValue,
     descricao: descricaoValue,
     categoria: categoriaValue,
     data: dateValue,
     endereco: enderecoValue,
+    imagemUrl: url,
+    userUID: userUID.uid,
   };
   addNewEvent(newEvent);
 });

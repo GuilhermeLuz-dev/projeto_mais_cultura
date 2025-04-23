@@ -27,7 +27,13 @@ const createUser = (newEmail, newPassword, nome, celular) => {
       console.log("Usuário criado com sucesso");
     })
     .catch((error) => {
-      console.error(error.message);
+      if (error.code === "auth/email-already-in-use") {
+        alert(
+          "O email já está em uso. Por favor, faça login ou use outro email."
+        );
+      } else {
+        console.log(error.message);
+      }
     });
 };
 
@@ -103,18 +109,24 @@ const handleSignUpWithGoogle = () => {
 };
 
 // Peagando dados do usuário logado;
-
 const getUserState = () => {
-  let currentUser = {};
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      const uid = user.uid;
-      const userData = await getUserData(uid);
-      currentUser = { ...currentUser, ...userData[0], email: user.email };
-      console.log(currentUser);
-    } else {
-      console.log("nenhum usuário logado!");
-    }
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+          const uid = user.uid;
+          const userData = await getUserData(uid);
+          const currentUser = { ...userData[0], email: user.email };
+          resolve(currentUser); // Retorna o usuário logado
+          console.log("Usuário logado:", currentUser);
+        } catch (error) {
+          reject(error); // Trata erros ao buscar dados do usuário
+        }
+      } else {
+        resolve(null); // Retorna null se nenhum usuário estiver logado
+        console.log("Nenhum usuário logado");
+      }
+    });
   });
 };
 
@@ -124,6 +136,7 @@ const logout = () => {
   signOut(auth)
     .then(() => {
       console.log("Usuário desconectado com sucesso!");
+      updatePageState();
     })
     .catch((error) => {
       console.error("Erro ao desconectar:", error);

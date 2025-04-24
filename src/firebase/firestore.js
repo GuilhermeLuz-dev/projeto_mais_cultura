@@ -16,10 +16,10 @@ const addNewEvent = async (event) => {
 };
 
 // Função que pode retornar todos os eventos ou apenas eventos por categoria.
-const searchEvents = async (category) => {
+const searchEvents = async (filter, value) => {
   let querySnapshot = {};
-  if (category) {
-    const q = query(eventsRef, where("categoria", "==", category));
+  if (filter) {
+    const q = query(eventsRef, where(filter, "==", value));
     querySnapshot = await getDocs(q);
   } else {
     querySnapshot = await getDocs(eventsRef);

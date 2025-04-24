@@ -25,6 +25,7 @@ formButton.addEventListener("click", async (event) => {
     endereco: enderecoValue,
     imagemUrl: url,
     userUID: userUID.uid,
+    emDestaque: false,
   };
   addNewEvent(newEvent);
 });

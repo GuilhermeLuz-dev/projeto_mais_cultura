@@ -1,7 +1,10 @@
 import { getUserState, logout } from "./firebase/auth";
 import { searchEvents } from "./firebase/firestore";
 
+const eventsContainer = document.getElementById("events");
 const buttonEvent = document.getElementById("buttonEvents");
+const buttonFeaturedEvents = document.getElementById("buttonFeaturedEvents");
+const btnUserEvents = document.getElementById("btnUserEvents");
 const btnCreateEvent = document.getElementById("btnCreateEvent");
 const btnLogout = document.getElementById("btnLogout");
 
@@ -35,11 +38,10 @@ const logoutUser = async () => {
 };
 
 // Listando TODOS os eventos existentes
-const listAllEvents = async () => {
-  const eventsContainer = document.getElementById("events");
-  const eventos = await searchEvents();
+const listEvents = async (eventsList) => {
+  let eventsContainer = document.createElement("ul");
 
-  eventos.forEach((event) => {
+  eventsList.forEach((event) => {
     // Criando os elementos
     const li = document.createElement("li");
     const title = document.createElement("h2");
@@ -68,19 +70,28 @@ const listAllEvents = async () => {
     // Adicionando o <li> ao container
     eventsContainer.appendChild(li);
   });
+  return eventsContainer;
 };
 
-// Listando eventos por categoria
+// Teste de listagem de todos os eventos
+buttonEvent.addEventListener("click", async () => {
+  eventsContainer.innerHTML = "";
+  eventsContainer.appendChild(await listEvents(await searchEvents()));
+});
 
-const listEventsByCategory = async (category) => {
-  const data = await searchEvents(category);
-  console.log(data);
-};
+// Teste de listagem de eventos em destaque
+buttonFeaturedEvents.addEventListener("click", async () => {
+  listEvents(await searchEvents("emDestaque", true));
+});
 
-buttonEvent.addEventListener("click", listAllEvents);
+// Teste de listagem de eventos do usuário
+btnUserEvents.addEventListener("click", async () => {
+  const user = await getUserState();
+  listEvents(await searchEvents("userUID", user.uid));
+});
+
 btnLogout.addEventListener("click", logoutUser);
 document.getElementById("currentUser").addEventListener("click", getUserState);
-// Verificando se o usuário está logado
-document.addEventListener("DOMContentLoaded", updatePageState);
 
-export { updatePageState };
+// Verificando se há usuário logado
+document.addEventListener("DOMContentLoaded", updatePageState);

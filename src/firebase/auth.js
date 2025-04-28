@@ -136,7 +136,6 @@ const logout = () => {
   signOut(auth)
     .then(() => {
       console.log("Usuário desconectado com sucesso!");
-      updatePageState();
     })
     .catch((error) => {
       console.error("Erro ao desconectar:", error);

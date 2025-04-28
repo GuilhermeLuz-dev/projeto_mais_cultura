@@ -1,5 +1,17 @@
+import { getUserState } from "./auth";
 import { db } from "./firebaseConfig";
-import { getDocs, addDoc, collection, query, where } from "firebase/firestore";
+import {
+  getDoc,
+  getDocs,
+  addDoc,
+  collection,
+  query,
+  where,
+  updateDoc,
+  doc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
 
 // Referências de coleções
 const eventsRef = collection(db, "eventos");
@@ -27,10 +39,28 @@ const searchEvents = async (filter, value) => {
 
   const data = [];
   querySnapshot.forEach((doc) => {
-    data.push(doc.data());
+    data.push({ ...doc.data(), id: doc.id });
   });
 
   return data;
+};
+
+// Função que retorna evento pelo ID do documento
+const getEventById = async (id) => {
+  try {
+    const eventDocRef = doc(eventsRef, id);
+    const eventDoc = await getDoc(eventDocRef);
+
+    if (eventDoc.exists()) {
+      return eventDoc.data();
+    } else {
+      console.log("Nenhum evento encontrado com esse ID.");
+      return null;
+    }
+  } catch (error) {
+    console.error("Erro ao buscar evento pelo ID:", error);
+    return null;
+  }
 };
 
 // Função que adiciona dados de novo usuário
@@ -58,4 +88,67 @@ const getUserData = async (uid) => {
   return data;
 };
 
-export { searchEvents, addNewEvent, addNewUser, getUserData };
+// Adicionando evento aos favoritos
+const addEventToFavorites = async (idEvent) => {
+  const user = await getUserState();
+  const id = await getIdForUID(user.uid);
+  try {
+    const userDocRef = doc(usersRef, id);
+    await updateDoc(userDocRef, {
+      favoritos: arrayUnion(idEvent),
+    });
+    console.log(`Evento ${idEvent} adicionado aos favoritos com sucesso.`);
+  } catch (error) {
+    console.error("Erro ao adicionar evento aos favoritos:", error);
+  }
+};
+
+// Removendo evento dos favoritos
+const removeEventFromFavorites = async (idEvent) => {
+  const user = await getUserState();
+  const id = await getIdForUID(user.uid);
+  try {
+    const userDocRef = doc(usersRef, id);
+    await updateDoc(userDocRef, {
+      favoritos: arrayRemove(idEvent),
+    });
+    console.log(`Evento ${idEvent} removido dos favoritos com sucesso.`);
+  } catch (error) {
+    console.error("Erro ao remover evento dos favoritos:", error);
+  }
+};
+
+// Função que retorna ID pelo uid do usuário
+const getIdForUID = async (uid) => {
+  const q = query(usersRef, where("uid", "==", uid));
+
+  try {
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      return new Promise((resolve) => {
+        querySnapshot.forEach((doc) => {
+          const documentoId = doc.id;
+          console.log("ID do documento encontrado:", documentoId);
+          resolve(documentoId);
+        });
+      });
+    } else {
+      console.log("Nenhum documento encontrado com esse valor.");
+      return Promise.resolve(null);
+    }
+  } catch (error) {
+    console.error("Erro ao buscar o documento:", error);
+    return Promise.reject(error);
+  }
+};
+
+export {
+  searchEvents,
+  addNewEvent,
+  addNewUser,
+  getUserData,
+  addEventToFavorites,
+  removeEventFromFavorites,
+  getEventById,
+};

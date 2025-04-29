@@ -6,6 +6,7 @@ import {
   signOut,
   signInWithPopup,
   GoogleAuthProvider,
+  deleteUser,
 } from "firebase/auth";
 
 import { app } from "./firebaseConfig";
@@ -142,4 +143,33 @@ const logout = () => {
     });
 };
 
-export { createUser, singIn, loginWithGoogle, logout, getUserState };
+// Ecluindo conta do usuário
+
+const deleteAccount = () => {
+  const user = auth.currentUser;
+  if (user) {
+    deleteUser(user)
+      .then(() => {
+        console.log("Conta do usuário deletada com sucesso!");
+      })
+      .catch((error) => {
+        if (error.code === "auth/requires-recent-login") {
+          alert("Por favor, faça login novamente e tente novamente.");
+          logout();
+        } else {
+          console.error("Erro ao deletar a conta:", error);
+        }
+      });
+  } else {
+    console.log("Nenhum usuário está logado.");
+  }
+};
+
+export {
+  createUser,
+  singIn,
+  loginWithGoogle,
+  logout,
+  getUserState,
+  deleteAccount,
+};

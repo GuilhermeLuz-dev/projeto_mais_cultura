@@ -4,6 +4,7 @@ import {
   getDoc,
   getDocs,
   addDoc,
+  deleteDoc,
   collection,
   query,
   where,
@@ -24,6 +25,17 @@ const addNewEvent = async (event) => {
     console.log(`Novo evento adicionado com sucesso: ${docRef.id}`);
   } catch (error) {
     console.error(error);
+  }
+};
+
+// Função que remove um evento.
+const removeEvent = async (id) => {
+  try {
+    const eventDocRef = doc(eventsRef, id);
+    await deleteDoc(eventDocRef);
+    console.log(`Evento com ID ${id} removido com sucesso.`);
+  } catch (error) {
+    console.error("Erro ao remover evento:", error);
   }
 };
 
@@ -103,6 +115,17 @@ const addEventToFavorites = async (idEvent) => {
   }
 };
 
+// Função que edita evento
+const eventEdit = async (idEvent, newsDatas) => {
+  try {
+    const eventDocRef = doc(eventsRef, idEvent);
+    await updateDoc(eventDocRef, newsDatas);
+    console.log(`Evento ${idEvent} editado com sucesso.`);
+  } catch (error) {
+    console.error("Erro ao editar evento:", error);
+  }
+};
+
 // Removendo evento dos favoritos
 const removeEventFromFavorites = async (idEvent) => {
   const user = await getUserState();
@@ -115,6 +138,31 @@ const removeEventFromFavorites = async (idEvent) => {
     console.log(`Evento ${idEvent} removido dos favoritos com sucesso.`);
   } catch (error) {
     console.error("Erro ao remover evento dos favoritos:", error);
+  }
+};
+
+// Mudando estado do evento para destacado
+const highlightingEvent = async (idEvent) => {
+  const eventsHighlighting = await searchEvents("emDestaque", true);
+  let highlighting = true;
+  try {
+    eventsHighlighting.forEach((event) => {
+      if (event.id == idEvent) {
+        highlighting = false;
+      }
+    });
+    console.log(highlighting);
+    const eventDocRef = doc(eventsRef, idEvent);
+    await updateDoc(eventDocRef, {
+      emDestaque: highlighting,
+    });
+    if (highlighting) {
+      console.log(`Evento ${idEvent} adicionado aos destaques com sucesso.`);
+    } else {
+      console.log(`Evento ${idEvent} removido dos destaques com sucesso.`);
+    }
+  } catch (error) {
+    console.error("Erro ao adicionar evento aos destaques:", error);
   }
 };
 
@@ -151,4 +199,7 @@ export {
   addEventToFavorites,
   removeEventFromFavorites,
   getEventById,
+  removeEvent,
+  highlightingEvent,
+  eventEdit,
 };

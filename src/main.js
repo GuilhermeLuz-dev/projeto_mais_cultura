@@ -46,7 +46,6 @@ const logoutUser = async () => {
 // Listando os eventos existentes
 const listEvents = async (eventsList) => {
   let eventsContainer = document.createElement("ul");
-
   const user = await getUserState();
 
   eventsList.forEach((event) => {
@@ -67,8 +66,10 @@ const listEvents = async (eventsList) => {
     pEndereco.textContent = `Endereço: ${event.endereco}`;
     pCategoria.textContent = `Categoria: ${event.categoria}`;
     img.src = event.imagemUrl;
-    btnFavorite.textContent = user.favoritos.includes(event.id)
-      ? "Desfavoritar"
+    btnFavorite.textContent = user.favoritos
+      ? user.favoritos.includes(event.id)
+        ? "Desfavoritar"
+        : "favoritar"
       : "favoritar";
     li.id = event.id;
 
@@ -107,7 +108,9 @@ buttonEvent.addEventListener("click", async () => {
 
 // Teste de listagem de eventos em destaque
 buttonFeaturedEvents.addEventListener("click", async () => {
-  listEvents(await searchEvents("emDestaque", true));
+  eventsContainer.appendChild(
+    await listEvents(await searchEvents("emDestaque", true))
+  );
 });
 
 btnLogout.addEventListener("click", logoutUser);

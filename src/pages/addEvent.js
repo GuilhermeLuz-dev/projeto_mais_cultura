@@ -24,6 +24,7 @@ formButton.addEventListener("click", async (event) => {
     data: dateValue,
     endereco: enderecoValue,
     imagemUrl: url,
+    imageName: fileInput.files[0].name,
     userUID: userUID.uid,
     emDestaque: false,
   };

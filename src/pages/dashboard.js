@@ -5,23 +5,26 @@ import {
   removeEvent,
   highlightingEvent,
   eventEdit,
+  addEventToFavorites,
+  removeEventFromFavorites,
 } from "../firebase/firestore";
 
-import { getImageUrl } from "../supabase/supabaseclient";
+import { getImageUrl, deleteImage } from "../supabase/supabaseclient";
 
 // Elementos HTML
 const btnUserEvents = document.getElementById("btnUserEvents");
 const btnListFavorite = document.getElementById("btnListFavorite");
 const btnDeleteAccont = document.getElementById("btnDeleteAccont");
 const btnSaveEdited = document.getElementById("btnSaveEdited");
-
 const formEdit = document.getElementById("formEdit");
 const eventsUser = document.getElementById("myEvents");
 
 // Listando TODOS os eventos existentes
 const listUserEvents = (eventsList) => {
   let eventsContainer = document.createElement("ul");
-  eventsList.forEach((event) => {
+  eventsList.forEach(async (event) => {
+    const user = await getUserState();
+    console.log(event.userUID, user.uid);
     // Criando os elementos
     const li = document.createElement("li");
     const title = document.createElement("h2");
@@ -33,6 +36,7 @@ const listUserEvents = (eventsList) => {
     const btnDelete = document.createElement("button");
     const btnHighlight = document.createElement("button");
     const btnEditEvent = document.createElement("button");
+    const btnFavorite = document.createElement("button");
 
     // Adicionando os valores
     title.textContent = event.titulo;
@@ -44,20 +48,29 @@ const listUserEvents = (eventsList) => {
     btnHighlight.textContent = event.emDestaque
       ? "Remover dos Destaques"
       : "Solicitar Destaque";
+    btnFavorite.textContent = user.favoritos
+      ? user.favoritos.includes(event.id)
+        ? "Desfavoritar"
+        : "favoritar"
+      : "favoritar";
     btnEditEvent.textContent = "Editar";
     img.src = event.imagemUrl;
     li.id = event.id;
 
     // Adicionando evento aos botões
+
+    // Botão de remover evento;
     btnDelete.addEventListener("click", async () => {
       if (window.confirm("Tem certeza que deseja deletar?")) {
         await removeEvent(li.id);
+        await deleteImage(event.imageName);
         await updateUserPage();
       } else {
         alert("Não removido");
       }
     });
 
+    // Adicionando eventos ao botão de solicitar destaque;
     btnHighlight.addEventListener("click", (e) => {
       if (e.target.textContent == "Solicitar destaque") {
         btnHighlight.textContent = "Remover dos destaques";
@@ -68,28 +81,35 @@ const listUserEvents = (eventsList) => {
       }
     });
 
+    // Adicionando evento ao botão de edição;
     btnEditEvent.addEventListener("click", () => {
       formEdit.style.display = "inline";
       // Salvando edição
       btnSaveEdited.addEventListener("click", async (e) => {
         e.preventDefault();
-        const newsData = await getDataForEdit();
+        const newsData = await getDataForEdit(event.imageName);
         eventEdit(event.id, newsData);
       });
     });
 
+    // Adicionando evento ao botão favoritar
+    btnFavorite.addEventListener("click", (e) => {
+      if (e.target.textContent === "favoritar") {
+        btnFavorite.textContent = "desfavoritar";
+        addEventToFavorites(li.id);
+      } else {
+        btnFavorite.textContent = "favoritar";
+        removeEventFromFavorites(li.id);
+      }
+    });
+
     // Adicionando os elementos ao <li>
-    li.append(
-      img,
-      title,
-      pDesc,
-      pData,
-      pEndereco,
-      pCategoria,
-      btnDelete,
-      btnHighlight,
-      btnEditEvent
-    );
+    li.append(img, title, pDesc, pData, pEndereco, pCategoria);
+    if (event.userUID === user.uid) {
+      li.append(btnDelete, btnEditEvent, btnHighlight);
+    } else {
+      li.append(btnFavorite);
+    }
 
     // Adicionando o <li> ao container
     eventsContainer.appendChild(li);
@@ -107,14 +127,14 @@ const updateUserPage = async () => {
 };
 
 // Função que pegar os dados editados
-const getDataForEdit = async () => {
+const getDataForEdit = async (currentImageName) => {
   const tituloValue = document.getElementById("tituloEdited").value;
   const descricaoValue = document.getElementById("descricaoEdited").value;
   const categoriaValue = document.getElementById("categoriaEdited").value;
   const dateValue = document.getElementById("dateEdited").value;
   const enderecoValue = document.getElementById("enderecoEdited").value;
   const fileInput = document.getElementById("fileInputEdited");
-  const url = fileInput.files[0] ? await getImageUrl(fileInput.files[0]) : "";
+  const url = await changeImage(fileInput.files[0], currentImageName);
 
   const newsData = {};
   if (tituloValue) newsData.titulo = tituloValue;
@@ -122,9 +142,23 @@ const getDataForEdit = async () => {
   if (categoriaValue) newsData.categoria = categoriaValue;
   if (dateValue) newsData.data = dateValue;
   if (enderecoValue) newsData.endereco = enderecoValue;
-  if (url) newsData.imagemUrl = url;
+  if (url) {
+    newsData.imagemUrl = url;
+    newsData.imageName = fileInput.files[0].name;
+  }
 
   return newsData;
+};
+
+// Trocando de imagem
+const changeImage = async (file, currentImageName) => {
+  if (file) {
+    console.log(file, currentImageName);
+    await deleteImage(currentImageName);
+    return await getImageUrl(file);
+  } else {
+    return null;
+  }
 };
 
 // Teste de listagem de eventos do usuário
@@ -145,7 +179,7 @@ btnListFavorite.addEventListener("click", async () => {
       return await getEventById(favorite);
     })
   );
-
+  eventsUser.innerHTML = "";
   eventsUser.appendChild(await listUserEvents(eventsFavorites));
 });
 

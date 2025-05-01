@@ -4,7 +4,7 @@ import supabase from "./superbaseConfig";
 const uploadImage = async (file) => {
   const { data, error } = await supabase.storage
     .from("imagens-mais-cultura")
-    .upload(`baners/${file.name}`, file, {
+    .upload(`banners/${file.name}`, file, {
       cacheControl: "3600",
       upsert: false,
     });
@@ -28,4 +28,16 @@ const getImageUrl = async (file) => {
   return data.publicUrl;
 };
 
-export { getImageUrl };
+const deleteImage = async (file) => {
+  const filePath = `banners/${file}`;
+  console.log(filePath);
+  const { data, error } = await supabase.storage
+    .from("imagens-mais-cultura")
+    .remove([filePath]);
+  if (error) {
+    console.log(error);
+  }
+  return true;
+};
+
+export { getImageUrl, deleteImage };

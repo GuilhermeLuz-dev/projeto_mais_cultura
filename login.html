@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | +Cultura</title>
+  <link rel="stylesheet" href="css/login.css"/>
+  <link rel="stylesheet" href="css/responsividade/r_login.css"/>
+</head>
+
+<body class="layout-col full-height bg-white">
+  <header>
+    <div class="logo">
+      <img src="img/maiscultura.png" alt="+cultura logo" class="logo-img" />
+    </div>
+
+  </header>
+    <main class="grow layout-center padding-main">
+      <div class="form-container">
+        <h1 class="title">Login</h1>
+        <form class="form-spacing">
+          <div class="input-wrapper">
+            <input type="email" placeholder="E-mail" class="input-field" />
+          </div>
+          <div class="input-wrapper">
+            <input type="password" placeholder="Senha" class="input-field padding-right" />
+            <button type="button" class="btn-icon" data-handler="handler_0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon-sm" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="text-left">
+            <a href="#" class="link-muted">Esqueceu sua senha?</a>
+          </div>
+          <button type="submit" class="btn-primary">Entrar</button>
+        </form>
+
+        <div class="social-login">
+          <button type="button" class="btn-google">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"> ... </svg>
+            <span class="text-label">
+              Continue com <img src="img/login/google.png" alt="Google" class="icon">
+            </span>
+            
+          </button>
+        </div>
+
+        <div class="signup-prompt">
+          <p class="text-muted">Ainda não tem uma conta?</p>
+          <button class="btn btn-secondary" onclick="location.href='register.html'">Cadastre-se</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-logo">
+        <img src="img/maiscultura.png" alt="Logo do +Cultura" class="footer-logo-img">
+      </div>
+      <div class="footer-line"> </div>
+      <div class="footer-links">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de uso</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

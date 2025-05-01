@@ -16,6 +16,7 @@ const btnUserEvents = document.getElementById("btnUserEvents");
 const btnListFavorite = document.getElementById("btnListFavorite");
 const btnDeleteAccont = document.getElementById("btnDeleteAccont");
 const btnSaveEdited = document.getElementById("btnSaveEdited");
+const btnCancelEdited = document.getElementById("btnCancelEdited");
 const formEdit = document.getElementById("formEdit");
 const eventsUser = document.getElementById("myEvents");
 
@@ -89,6 +90,11 @@ const listUserEvents = (eventsList) => {
         e.preventDefault();
         const newsData = await getDataForEdit(event.imageName);
         eventEdit(event.id, newsData);
+      });
+
+      btnCancelEdited.addEventListener("click", (e) => {
+        e.preventDefault();
+        formEdit.style.display = "none";
       });
     });
 

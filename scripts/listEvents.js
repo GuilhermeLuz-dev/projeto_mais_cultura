@@ -2,7 +2,9 @@ import { searchEvents } from "../src/firebase/firestore";
 import { configSwiper } from "./swiperConfig";
 
 const carrousselContainer = document.getElementById("carroussel");
-
+const firstCategoryContainer = document.getElementById(
+  "first-category-container"
+);
 // Formatando datas
 const formatDate = (date) => {
   const mesesAbreviados = [
@@ -68,9 +70,7 @@ const listFeaturedEvents = async (eventsList) => {
   return swiper;
 };
 
-const listEventsByCategory = async (events) => {
-  const categoryContainer = document.getElementById("first-category-container");
-
+const listEventsByCategory = async (events, container) => {
   events.forEach((event) => {
     const card = document.createElement("div");
     card.className = "event-one-card";
@@ -90,14 +90,21 @@ const listEventsByCategory = async (events) => {
 
     infoContainer.append(title, andressAndDateContainer);
     card.append(img, infoContainer);
-    categoryContainer.appendChild(card);
+    container.appendChild(card);
   });
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-  carrousselContainer.prepend(
-    await listFeaturedEvents(await searchEvents("emDestaque", true))
+  const eventsFeatureds = await listFeaturedEvents(
+    await searchEvents("emDestaque", true)
   );
+  carrousselContainer.innerHTML = "";
+  carrousselContainer.prepend(eventsFeatureds);
   configSwiper();
-  listEventsByCategory(await searchEvents("categoria", "Show"));
+
+  firstCategoryContainer.innerHTML = "";
+  listEventsByCategory(
+    await searchEvents("categoria", "Show"),
+    firstCategoryContainer
+  );
 });

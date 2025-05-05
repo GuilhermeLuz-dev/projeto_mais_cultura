@@ -3,16 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="styles/form.css" />
     <title>Crie seu evento | +Cultura</title>
   </head>
   <body>
     <header>
       <div class="logo">
-        <img src="img/maiscultura.png" alt="Logo do +cultura" class="logo-img-header" />
+        <img
+          src="images/maiscultura.png"
+          alt="Logo do +cultura"
+          class="logo-img-header"
+        />
       </div>
     </header>
-
     <main class="container">
       <h1 class="titulo-principal"><strong>CADASTRE SEU EVENTO</strong></h1>
 
@@ -27,7 +30,7 @@
         <label class="description-event" for="descricao">
           Descrição do Evento
           <textarea id="descricao" class="description-event-input"></textarea>
-        </label>        
+        </label>
 
         <label class="category-event" for="categoria">
           Categoria do Evento
@@ -39,12 +42,11 @@
           <option value="exposicao">Exposição</option>
           <option value="educacao">Educação e Negócios</option>
         </select>
-        
 
         <h2 class="titulo-imagem">Imagem do Evento</h2>
         <div class="upload-imagem">
           <label for="imagem-upload" class="upload-label">
-            <img src="img/file.png" alt="Upload" class="upload-icon" />
+            <img src="images/file.png" alt="Upload" class="upload-icon" />
             Clique ou arraste a imagem aqui
             <input
               type="file"
@@ -54,7 +56,8 @@
             />
           </label>
           <div id="drop-area" class="texto-tamanho-arquivo">
-            A dimensão recomendada é de 1600 x 838. <br> Formato JPEG, GIF ou PNG de no máximo 2MB.
+            A dimensão recomendada é de 1600 x 838. <br />
+            Formato JPEG, GIF ou PNG de no máximo 2MB.
           </div>
         </div>
       </div>
@@ -82,7 +85,7 @@
           </label>
         </div>
       </div>
-      
+
       <div class="localizacao">
         <h1 class="titulo-localizacao">Localização</h1>
 
@@ -118,7 +121,11 @@
             </label>
           </div>
 
-          <img src="img/mapa_conquista.jpg" alt="Localização" class="localizacao-mapa"/>
+          <img
+            src="images/mapa_conquista.jpg"
+            alt="Localização"
+            class="localizacao-mapa"
+          />
         </div>
       </div>
 
@@ -157,7 +164,10 @@
             Nome
             <input type="text" />
           </label>
-          <label for="descricao-organizador" class="label-organizador descricao">
+          <label
+            for="descricao-organizador"
+            class="label-organizador descricao"
+          >
             Descrição do produtor ou empresa
             <input type="text" />
           </label>
@@ -168,30 +178,35 @@
         <h1 class="titulo-responsabilidade">Responsabilidade</h1>
         <label for="termos-responsabilidade" class="label-responsabilidade">
           <input type="checkbox" />
-          Ao publicar este evento, declaro estar de acordo com os Termos de Uso e ciente da Política de Privacidade.
+          Ao publicar este evento, declaro estar de acordo com os Termos de Uso
+          e ciente da Política de Privacidade.
         </label>
       </div>
 
       <button class="botao-cadastrar">Publicar Evento</button>
     </main>
-      <footer>
-        <div class="footer-logo">
-          <img src="img/maiscultura.png" alt="Logo do +Cultura" class="footer-logo-img" />
-        </div>
-        <div class="social-icons">
-          <a href="https://www.instagram.com/maisculturavc" target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.youtube.com/@maisculturavc" target="_blank">
-            <i class="fab fa-youtube"></i>
-          </a>
-        </div>
-        <div class="footer-line"></div>
-        <div class="footer-links">
-          <a href="#">Quem somos?</a>
-          <a href="#">Política de Privacidade</a>
-          <a href="#">Termos de uso</a>
-        </div>
-      </footer>
+    <footer>
+      <div class="footer-logo">
+        <img
+          src="images/maiscultura.png"
+          alt="Logo do +Cultura"
+          class="footer-logo-img"
+        />
+      </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/maisculturavc" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@maisculturavc" target="_blank">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      <div class="footer-line"></div>
+      <div class="footer-links">
+        <a href="#">Quem somos?</a>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de uso</a>
+      </div>
+    </footer>
   </body>
 </html>

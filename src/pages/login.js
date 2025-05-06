@@ -2,8 +2,8 @@ import {
   createUser,
   singIn,
   logout,
-  loginWithGoogle,
   getUserState,
+  handleSignInWithGoogle,
 } from "../firebase/auth";
 
 const btn_login = document.getElementById("btn_login");
@@ -17,9 +17,14 @@ btn_login.addEventListener("click", () => {
     alert("Preencha os campos obrigatórios");
     return;
   }
-  singIn(email, password);
+  console.log(singIn(email, password));
 });
 
 document
   .getElementById("button_login_google")
-  .addEventListener("click", loginWithGoogle);
+  .addEventListener("click", async (e) => {
+    const loged = await handleSignInWithGoogle();
+    if (loged) {
+      window.location.href = "index.html";
+    }
+  });

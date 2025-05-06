@@ -44,77 +44,79 @@ const createUser = async (newEmail, newPassword, nome, celular) => {
 };
 
 // Login de usuário
-const singIn = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log(
-        "Usuário logado com sucesso!!!" + "\n" + " Olá " + user.displayName
-      );
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      alert("Senha ou email incorretos");
-    });
+const singIn = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+    console.log(
+      "Usuário logado com sucesso!!!" + "\n" + " Olá " + user.displayName
+    );
+    return true;
+  } catch (error) {
+    console.error(error.message);
+    alert("Senha ou email incorretos");
+    return false;
+  }
 };
 
-// Autenticação pela conta do Google;
-const loginWithGoogle = (e) => {
-  e.preventDefault();
-
-  e.target.id === "button_login_google"
-    ? handleSignInWithGoogle()
-    : handleSignUpWithGoogle();
-};
+// // Autenticação pela conta do Google;
+// const loginWithGoogle = async (e) => {
+//   e.target.id === "button_login_google"
+//     ? await handleSignInWithGoogle()
+//     : await handleSignUpWithGoogle();
+// };
 
 // Função para fazer login com o Google
-const handleSignInWithGoogle = () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const user = result.user;
-      getUserData(user.uid).then((userData) => {
-        if (userData.length === 0) {
-          logout();
-          user.delete();
-          alert("Usuário não cadastrado, faça o cadastro!");
-        } else {
-          alert("Bem vindo de volta " + user.displayName);
-          window.location.href = "index.html";
-        }
-      });
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      console.log(errorMessage);
-    });
+const handleSignInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const user = result.user;
+    const userData = await getUserData(user.uid);
+
+    if (userData.length === 0) {
+      await logout();
+      await user.delete();
+      alert("Usuário não cadastrado, faça o cadastro!");
+      return false;
+    } else {
+      alert("Bem vindo de volta " + user.displayName);
+      return true;
+    }
+  } catch (error) {
+    console.log(error.message);
+    return false;
+  }
 };
 
 // Função para fazer cadastro com o Google
-const handleSignUpWithGoogle = () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const user = result.user;
-      getUserData(user.uid).then((userData) => {
-        if (userData.length === 0) {
-          addNewUser({
-            nome: user.displayName,
-            celular: user.phoneNumber,
-            uid: user.uid,
-          });
-          console.log("Usuário criado com sucesso");
-          window.location.href = "index.html";
-        } else {
-          alert("Já existe um usuário com esse email, faça o login!");
-          logout();
-        }
+const handleSignUpWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    const userData = await getUserData(user.id);
+    if (userData.length === 0) {
+      addNewUser({
+        nome: user.displayName,
+        celular: user.phoneNumber,
+        uid: user.uid,
       });
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      console.log(errorMessage);
-    });
+      console.log("Usuário criado com sucesso");
+      return true;
+    } else {
+      alert("Já existe um usuário com esse email, faça o login!");
+      logout();
+      return false;
+    }
+  } catch (error) {
+    const errorMessage = error.message;
+    console.log(errorMessage);
+    return false;
+  }
 };
 
 // Peagando dados do usuário logado;
@@ -176,7 +178,8 @@ const deleteAccount = () => {
 export {
   createUser,
   singIn,
-  loginWithGoogle,
+  handleSignInWithGoogle,
+  handleSignUpWithGoogle,
   logout,
   getUserState,
   deleteAccount,

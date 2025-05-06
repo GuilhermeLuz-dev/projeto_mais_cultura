@@ -16,26 +16,31 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 // Cadastrando novo usuário
-const createUser = (newEmail, newPassword, nome, celular) => {
-  createUserWithEmailAndPassword(auth, newEmail, newPassword)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      addNewUser({
-        nome: nome,
-        celular: celular,
-        uid: user.uid,
-      });
-      console.log("Usuário criado com sucesso");
-    })
-    .catch((error) => {
-      if (error.code === "auth/email-already-in-use") {
-        alert(
-          "O email já está em uso. Por favor, faça login ou use outro email."
-        );
-      } else {
-        console.log(error.message);
-      }
+const createUser = async (newEmail, newPassword, nome, celular) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      newEmail,
+      newPassword
+    );
+    const user = userCredential.user;
+    await addNewUser({
+      nome: nome,
+      celular: celular,
+      uid: user.uid,
     });
+    console.log("Usuário criado com sucesso");
+    return true;
+  } catch (error) {
+    if (error.code === "auth/email-already-in-use") {
+      alert(
+        "O email já está em uso. Por favor, faça login ou use outro email."
+      );
+    } else {
+      console.error(error.message);
+    }
+    return false;
+  }
 };
 
 // Login de usuário
@@ -49,13 +54,14 @@ const singIn = (email, password) => {
     })
     .catch((error) => {
       const errorMessage = error.message;
-      console.log("Senha ou email incorretos");
+      alert("Senha ou email incorretos");
     });
 };
 
 // Autenticação pela conta do Google;
 const loginWithGoogle = (e) => {
   e.preventDefault();
+
   e.target.id === "button_login_google"
     ? handleSignInWithGoogle()
     : handleSignUpWithGoogle();
@@ -74,6 +80,7 @@ const handleSignInWithGoogle = () => {
           alert("Usuário não cadastrado, faça o cadastro!");
         } else {
           alert("Bem vindo de volta " + user.displayName);
+          window.location.href = "index.html";
         }
       });
     })
@@ -97,6 +104,7 @@ const handleSignUpWithGoogle = () => {
             uid: user.uid,
           });
           console.log("Usuário criado com sucesso");
+          window.location.href = "index.html";
         } else {
           alert("Já existe um usuário com esse email, faça o login!");
           logout();

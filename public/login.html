@@ -18,38 +18,27 @@
     <main class="grow layout-center padding-main">
       <div class="form-container">
         <h1 class="title">Login</h1>
-        <form class="form-spacing">
+        <form id="form_login" class="form-spacing">
           <div class="input-wrapper">
-            <input type="email" placeholder="E-mail" class="input-field" />
+            <input id="email" type="email" placeholder="E-mail" class="input-field" />
           </div>
           <div class="input-wrapper">
-            <input type="password" placeholder="Senha" class="input-field padding-right" />
-            <button type="button" class="btn-icon" data-handler="handler_0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon-sm" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-              </svg>
-            </button>
+            <input id="password" type="password" placeholder="Senha" class="input-field padding-right" />
           </div>
           <div class="text-left">
             <a href="#" class="link-muted">Esqueceu sua senha?</a>
           </div>
-          <button type="submit" class="btn-primary">Entrar</button>
+          <button id="btn_login" type="button"  class="btn-primary">Entrar</button>
         </form>
-
         <div class="social-login">
-          <button type="button" class="btn-google">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"> ... </svg>
-            <span class="text-label">
-              Continue com <img src="images/login/google.png" alt="Google" class="icon">
-            </span>
-            
+          <button id="button_login_google" type="button" class="btn-google">           
+              Continue com<img src="images/login/google.png" alt="Google" class="icon">
           </button>
         </div>
 
         <div class="signup-prompt">
           <p class="text-muted">Ainda não tem uma conta?</p>
-          <button class="btn btn-secondary" onclick="location.href='register.html'">Cadastre-se</button>
+          <a href="register.html"><button class="btn btn-secondary" onclick="location.href='register.html'">Cadastre-se</button></a>
         </div>
       </div>
     </main>
@@ -64,5 +53,6 @@
       </div>
     </footer>
   </div>
+  <script type="module" src="../src/pages/login.js"></script>
 </body>
 </html>

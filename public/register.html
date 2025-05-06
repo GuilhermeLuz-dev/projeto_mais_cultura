@@ -19,13 +19,16 @@
         <h1 class="title">Cadastre-se</h1>
         <form class="form-spacing">
             <div class="input-wrapper">
-                <input type="nome" placeholder="Nome" class="input-field" />
+                <input id="newName" type="nome" placeholder="Nome" class="input-field" />
               </div>
           <div class="input-wrapper">
-            <input type="email" placeholder="E-mail" class="input-field" />
+            <input id="newEmail" type="email" placeholder="E-mail" class="input-field" />
           </div>
           <div class="input-wrapper">
-            <input type="password" placeholder="Senha" class="input-field padding-right" />
+            <input id="newTel" type="tel" placeholder="Telefone" class="input-field" />
+          </div>
+          <div class="input-wrapper">
+            <input id="newPassword" type="password" placeholder="Senha" class="input-field padding-right" />
             <button type="button" class="btn-icon" data-handler="handler_0">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon-sm" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
@@ -33,11 +36,13 @@
               </svg>
             </button>
           </div>
-          <div class="text-left">
-            <a href="#" class="link-muted">Esqueceu sua senha?</a>
-          </div>
-          <button type="submit" class="btn-primary">Cadastrar</button>
+          <button id="btn_cadastro" type="submit" class="btn-primary">Cadastrar</button>
         </form>
+        <div class="social-login">
+          <button id="button_cadastro_google" type="button" class="btn-google">           
+              Cadastre-se com a conta<img src="images/login/google.png" alt="Google" class="icon">
+          </button>
+        </div>
       </div>
     </main>
     <footer>
@@ -51,5 +56,7 @@
       </div>
     </footer>
   </div>
+
+  <script type="module" src="../src/pages/register.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@ import { configSwiper } from "./swiperConfig";
 
 const carrousselContainer = document.getElementById("carroussel");
 const firstCategoryContainer = document.getElementById(
-  "first-category-container"
+  "firstCategoryContainer"
 );
 // Formatando datas
 const formatDate = (date) => {
@@ -70,7 +70,9 @@ const listFeaturedEvents = async (eventsList) => {
   return swiper;
 };
 
-const listEventsByCategory = async (events, container) => {
+const listEventsByCategory = async (events) => {
+  const categoryContainer = document.createElement("div");
+  categoryContainer.className = "event-cards";
   events.forEach((event) => {
     const card = document.createElement("div");
     card.className = "event-one-card";
@@ -90,11 +92,13 @@ const listEventsByCategory = async (events, container) => {
 
     infoContainer.append(title, andressAndDateContainer);
     card.append(img, infoContainer);
-    container.appendChild(card);
+    categoryContainer.appendChild(card);
   });
+  return categoryContainer;
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
+  // Listando eventos em destaque no carrosel
   const eventsFeatureds = await listFeaturedEvents(
     await searchEvents("emDestaque", true)
   );
@@ -102,9 +106,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   carrousselContainer.prepend(eventsFeatureds);
   configSwiper();
 
-  firstCategoryContainer.innerHTML = "";
-  listEventsByCategory(
-    await searchEvents("categoria", "Show"),
-    firstCategoryContainer
+  // Listando eventos por categoria
+  const firstCategoryEvents = await listEventsByCategory(
+    await searchEvents("categoria", "Show")
   );
+  firstCategoryContainer.innerHTML = "";
+  firstCategoryContainer.appendChild(firstCategoryEvents);
 });

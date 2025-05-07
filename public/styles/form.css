@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
 
 * {
   margin: 0;
@@ -6,7 +6,9 @@
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
@@ -20,12 +22,13 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: #fff;
   color: #000;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -45,6 +48,10 @@ header {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   position: relative;
   z-index: 9999;
+}
+
+input {
+  padding: 15px;
 }
 
 .logo-img {
@@ -152,7 +159,6 @@ header {
   box-sizing: border-box; /* garante que padding não estoure o height */
 }
 
-
 .category-event {
   display: flex;
   flex-direction: column;
@@ -199,6 +205,7 @@ header {
   height: 200px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: 1px solid #000000;
+  cursor: pointer;
 }
 
 .upload-icon {
@@ -236,8 +243,11 @@ header {
   color: #000842;
 }
 
-.data-horario, .localizacao, .ingresso,
-.organizador, .responsabilidade {
+.data-horario,
+.localizacao,
+.ingresso,
+.organizador,
+.responsabilidade {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -250,8 +260,11 @@ header {
   -moz-box-shadow: -2px 1px 25px -7px rgba(0, 0, 0, 0.69);
 }
 
-.titulo-data-horario, .titulo-localizacao, .titulo-ingresso,
-.titulo-organizador, .titulo-responsabilidade {
+.titulo-data-horario,
+.titulo-localizacao,
+.titulo-ingresso,
+.titulo-organizador,
+.titulo-responsabilidade {
   color: #11185c;
   font-size: 24px;
   font-weight: 700;
@@ -271,7 +284,6 @@ header {
   border-radius: 10px;
   border: 1px solid #000842;
   background-color: #f1f1f1;
-  padding: 15px;
   margin-top: 10px;
 }
 
@@ -288,7 +300,6 @@ header {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  
 }
 
 .label-localizacao input {

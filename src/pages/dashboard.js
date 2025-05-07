@@ -128,7 +128,7 @@ const updateUserPage = async () => {
   const user = await getUserState();
   eventsUser.innerHTML = "";
   eventsUser.appendChild(
-    listUserEvents(await searchEvents("userUID", user.uid))
+    listUserEvents(await searchEvents("userUID", user.uid)),
   );
 };
 
@@ -172,7 +172,7 @@ btnUserEvents.addEventListener("click", async () => {
   const user = await getUserState();
   eventsUser.innerHTML = "";
   eventsUser.appendChild(
-    await listUserEvents(await searchEvents("userUID", user.uid))
+    await listUserEvents(await searchEvents("userUID", user.uid)),
   );
 });
 
@@ -183,7 +183,7 @@ btnListFavorite.addEventListener("click", async () => {
   const eventsFavorites = await Promise.all(
     favorites.map(async (favorite) => {
       return await getEventById(favorite);
-    })
+    }),
   );
   eventsUser.innerHTML = "";
   eventsUser.appendChild(await listUserEvents(eventsFavorites));

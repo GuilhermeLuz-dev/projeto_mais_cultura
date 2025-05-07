@@ -1,4 +1,4 @@
-import { createUser, loginWithGoogle } from "../firebase/auth";
+import { createUser, handleSignUpWithGoogle } from "../firebase/auth";
 
 const btn_cadastro = document.getElementById("btn_cadastro");
 
@@ -24,4 +24,9 @@ btn_cadastro.addEventListener("click", async (event) => {
 // Adicionando eventos ao botões
 document
   .getElementById("button_cadastro_google")
-  .addEventListener("click", loginWithGoogle);
+  .addEventListener("click", async (e) => {
+    const loged = await handleSignUpWithGoogle();
+    if (loged) {
+      // window.location.href = "index.html";
+    }
+  });

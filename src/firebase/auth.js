@@ -98,7 +98,8 @@ const handleSignUpWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
-    const userData = await getUserData(user.id);
+    const userData = await getUserData(user.uid);
+    console.log(userData);
     if (userData.length === 0) {
       addNewUser({
         nome: user.displayName,

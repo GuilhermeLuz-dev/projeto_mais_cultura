@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,7 +24,11 @@
 
         <label class="name-event" for="nome">
           Nome do Evento
-          <input type="text" />
+          <input
+            id="eventName"
+            type="text"
+            placeholder="Digite o título do evento..."
+          />
         </label>
 
         <label class="description-event" for="descricao">
@@ -36,8 +40,8 @@
           Categoria do Evento
         </label>
         <select id="categoria" name="categoria" class="input-select">
-          <option value="">Selecione uma categoria</option>
-          <option value="musica">Música e Entretenimento</option>
+          <option value="entretenimento">Música e Entretenimento</option>
+          <option value="esporte">Esporte e lazer</option>
           <option value="teatro">Teatro</option>
           <option value="exposicao">Exposição</option>
           <option value="educacao">Educação e Negócios</option>
@@ -48,13 +52,13 @@
           <label for="imagem-upload" class="upload-label">
             <img src="images/file.png" alt="Upload" class="upload-icon" />
             Clique ou arraste a imagem aqui
-            <input
-              type="file"
-              id="imagem-upload"
-              accept="image/*"
-              class="upload-input"
-            />
           </label>
+          <input
+            type="file"
+            id="imagem-upload"
+            accept="image/*"
+            class="upload-input"
+          />
           <div id="drop-area" class="texto-tamanho-arquivo">
             A dimensão recomendada é de 1600 x 838. <br />
             Formato JPEG, GIF ou PNG de no máximo 2MB.
@@ -69,19 +73,19 @@
         <div class="data-horario-informacoes">
           <label for="data-inicio" class="label-data">
             Data de Início
-            <input type="date" />
+            <input id="start_date" type="date" />
           </label>
           <label for="data-termino" class="label-data">
             Data de Término
-            <input type="date" />
+            <input id="end_date" type="date" />
           </label>
           <label for="hora-inicio" class="label-hora">
             Hora de Início
-            <input type="time" />
+            <input id="start_time" type="time" />
           </label>
           <label for="hora-termino" class="label-hora">
             Hora de Término
-            <input type="time" />
+            <input id="end_time" type="time" />
           </label>
         </div>
       </div>
@@ -93,31 +97,31 @@
           <div class="localizacao-informacoes">
             <label for="cep" class="label-localizacao">
               CEP
-              <input type="text" />
+              <input id="cep" type="text" />
             </label>
             <label for="cidade" class="label-localizacao">
               Cidade
-              <input type="text" />
+              <input id="cidade" type="text" />
             </label>
             <label for="bairro" class="label-localizacao">
               Bairro
-              <input type="text" />
+              <input id="bairro" type="text" />
             </label>
             <label for="logradouro" class="label-localizacao">
               Logradouro
-              <input type="text" />
+              <input id="logradouro" type="text" />
             </label>
             <label for="numero" class="label-localizacao">
               Número
-              <input type="text" />
+              <input id="numero" type="text" />
             </label>
             <label for="complemento" class="label-localizacao">
               Complemento
-              <input type="text" />
+              <input id="complemento" type="text" />
             </label>
             <label for="local" class="label-localizacao">
               Nome do local do evento
-              <input type="text" />
+              <input id="nomeLocal" type="text" />
             </label>
           </div>
 
@@ -162,14 +166,14 @@
         <div class="organizador-informacoes">
           <label for="nome-organizador" class="label-organizador">
             Nome
-            <input type="text" />
+            <input id="organizerName" type="text" />
           </label>
           <label
             for="descricao-organizador"
             class="label-organizador descricao"
           >
             Descrição do produtor ou empresa
-            <input type="text" />
+            <input id="organizerDesc" type="text" />
           </label>
         </div>
       </div>
@@ -183,7 +187,9 @@
         </label>
       </div>
 
-      <button class="botao-cadastrar">Publicar Evento</button>
+      <button id="btn_cadastrar" class="botao-cadastrar">
+        Publicar Evento
+      </button>
     </main>
     <footer>
       <div class="footer-logo">
@@ -208,5 +214,7 @@
         <a href="#">Termos de uso</a>
       </div>
     </footer>
+
+    <script type="module" src="../src/pages/addEvent.js"></script>
   </body>
 </html>

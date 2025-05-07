@@ -1,5 +1,5 @@
 @media (max-width: 768px) {
-header {
+  header {
     flex-direction: column;
     height: auto;
     padding: 10px;
@@ -30,7 +30,7 @@ header {
     text-align: left;
     position: absolute;
   }
-  
+
   .text-muted {
     position: relative;
     top: -20px;
@@ -39,12 +39,12 @@ header {
     margin-top: 12rem; /* Ajuste conforme necessário */
     color: #4b5563;
   }
-  
+
   .text-label {
     color: #374151;
     font-weight: 500;
   }
-  
+
   .input-field {
     position: relative;
     left: 7%;
@@ -58,7 +58,7 @@ header {
     outline: none;
     box-shadow: 0 0 0 2px #3b82f6;
   }
-  
+
   .btn-primary {
     position: relative;
     top: -30px;
@@ -97,7 +97,7 @@ header {
     border: none;
     text-align: center;
   }
-  
+
   .btn-secondary:hover {
     background-color: #1c3a7d;
     transform: translateY(-2px);
@@ -131,14 +131,14 @@ header {
     font-size: 12px;
     gap: 0.5em; /* Espaço entre o ícone e o texto */
   }
-  
+
   .text-label .icon {
-    width: 70px;  /* ou o tamanho que preferir */
+    width: 70px; /* ou o tamanho que preferir */
     height: 28px;
     display: inline-block;
     margin-right: 5px !important;
   }
-  
+
   .btn-icon {
     position: absolute;
     top: 50%;
@@ -153,7 +153,7 @@ header {
   .btn-icon:hover {
     color: #374151;
   }
-  
+
   .link-muted {
     display: inline-block;
     margin-left: -42.5rem;
@@ -166,38 +166,38 @@ header {
   .link-muted:hover {
     color: #2563eb;
     text-decoration: underline;
-  }	
+  }
 
-  .footer-logo img{
+  .footer-logo img {
     max-width: 110px !important;
     height: auto;
     margin-bottom: 0px !important;
     margin-left: -35vw; /* Ajuste para centralizar */
   }
-  
+
   .footer-line {
-  position: absolute;
-  left: 50%;
-  width: 1.25px;
-  height: 70px;
-  background-color: white;
+    position: absolute;
+    left: 50%;
+    width: 1.25px;
+    height: 70px;
+    background-color: white;
   }
-  
+
   .footer-links {
     position: absolute;
     left: 55vw; /* aumente conforme desejar */
     display: flex;
     flex-direction: column;
     gap: 8px;
-    }
-  
+  }
+
   .footer-links a {
     display: block;
     color: white;
     text-decoration: none;
     font-size: 10px !important; /* Ajuste para tamanho menor */
   }
-  
+
   .footer-links a:hover {
     text-decoration: underline;
   }

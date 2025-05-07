@@ -2,9 +2,22 @@ import { searchEvents } from "../src/firebase/firestore";
 import { configSwiper } from "./swiperConfig";
 
 const carrousselContainer = document.getElementById("carroussel");
-const firstCategoryContainer = document.getElementById(
-  "firstCategoryContainer"
+const entertainmentCategoryContainer = document.getElementById(
+  "entertainmentCategoryContainer"
 );
+const sportsCategoryContainer = document.getElementById(
+  "sportsCategoryContainer"
+);
+const theaterCategoryContainer = document.getElementById(
+  "theaterCategoryContainer"
+);
+const exhibitionCategoryContainer = document.getElementById(
+  "exhibitionCategoryContainer"
+);
+const educationCategoryContainer = document.getElementById(
+  "educationCategoryContainer"
+);
+
 // Formatando datas
 const formatDate = (date) => {
   const mesesAbreviados = [
@@ -87,8 +100,8 @@ const listEventsByCategory = async (events) => {
     title.textContent = event.titulo;
 
     const andressAndDateContainer = document.createElement("span");
-    const date = formatDate(new Date(event.data));
-    andressAndDateContainer.innerHTML += `<strong>${date}</strong> | ${event.endereco}`;
+    const date = formatDate(new Date(event.data.startDate));
+    andressAndDateContainer.innerHTML += `<strong>${date}</strong> | ${event.endereco.nomeLocal}`;
 
     infoContainer.append(title, andressAndDateContainer);
     card.append(img, infoContainer);
@@ -97,19 +110,36 @@ const listEventsByCategory = async (events) => {
   return categoryContainer;
 };
 
+const getEventsByCategory = async (container, category) => {
+  const listEvents = await listEventsByCategory(
+    await searchEvents("categoria", category)
+  );
+
+  if (!listEvents.textContent) {
+    container.parentNode.textContent = "";
+  }
+
+  if (container) {
+    container.innerHTML = " ";
+    container.appendChild(listEvents);
+  }
+};
+
 document.addEventListener("DOMContentLoaded", async () => {
   // Listando eventos em destaque no carrosel
   const eventsFeatureds = await listFeaturedEvents(
     await searchEvents("emDestaque", true)
   );
-  carrousselContainer.innerHTML = "";
-  carrousselContainer.prepend(eventsFeatureds);
+  if (eventsFeatureds.querySelectorAll(".swiper-slide").length > 0) {
+    carrousselContainer.innerHTML = "";
+    carrousselContainer.prepend(eventsFeatureds);
+  }
   configSwiper();
 
   // Listando eventos por categoria
-  const firstCategoryEvents = await listEventsByCategory(
-    await searchEvents("categoria", "Show")
-  );
-  firstCategoryContainer.innerHTML = "";
-  firstCategoryContainer.appendChild(firstCategoryEvents);
+  await getEventsByCategory(entertainmentCategoryContainer, "entretenimento");
+  await getEventsByCategory(sportsCategoryContainer, "esporte");
+  await getEventsByCategory(theaterCategoryContainer, "teatro");
+  await getEventsByCategory(exhibitionCategoryContainer, "exposicao");
+  await getEventsByCategory(educationCategoryContainer, "educacao");
 });

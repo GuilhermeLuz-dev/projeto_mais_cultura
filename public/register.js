@@ -1,4 +1,4 @@
-import { createUser, handleSignUpWithGoogle } from "../../src/firebase/auth";
+import { createUser, handleSignUpWithGoogle } from "../src/firebase/auth";
 
 const btn_cadastro = document.getElementById("btn_cadastro");
 

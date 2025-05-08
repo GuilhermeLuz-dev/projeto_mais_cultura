@@ -4,7 +4,7 @@ import {
   logout,
   getUserState,
   handleSignInWithGoogle,
-} from "../../src/firebase/auth";
+} from "../src/firebase/auth";
 
 const btn_login = document.getElementById("btn_login");
 

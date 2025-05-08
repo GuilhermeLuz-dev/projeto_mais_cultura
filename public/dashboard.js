@@ -1,4 +1,4 @@
-import { getUserState, deleteAccount } from "../firebase/auth";
+import { getUserState, deleteAccount } from "../src/firebase/auth";
 import {
   searchEvents,
   getEventById,
@@ -7,9 +7,9 @@ import {
   eventEdit,
   addEventToFavorites,
   removeEventFromFavorites,
-} from "../firebase/firestore";
+} from "../src/firebase/firestore";
 
-import { getImageUrl, deleteImage } from "../supabase/supabaseclient";
+import { getImageUrl, deleteImage } from "../src/supabase/supabaseclient";
 
 // Elementos HTML
 const btnUserEvents = document.getElementById("btnUserEvents");
@@ -128,7 +128,7 @@ const updateUserPage = async () => {
   const user = await getUserState();
   eventsUser.innerHTML = "";
   eventsUser.appendChild(
-    listUserEvents(await searchEvents("userUID", user.uid)),
+    listUserEvents(await searchEvents("userUID", user.uid))
   );
 };
 
@@ -172,7 +172,7 @@ btnUserEvents.addEventListener("click", async () => {
   const user = await getUserState();
   eventsUser.innerHTML = "";
   eventsUser.appendChild(
-    await listUserEvents(await searchEvents("userUID", user.uid)),
+    await listUserEvents(await searchEvents("userUID", user.uid))
   );
 });
 
@@ -183,7 +183,7 @@ btnListFavorite.addEventListener("click", async () => {
   const eventsFavorites = await Promise.all(
     favorites.map(async (favorite) => {
       return await getEventById(favorite);
-    }),
+    })
   );
   eventsUser.innerHTML = "";
   eventsUser.appendChild(await listUserEvents(eventsFavorites));

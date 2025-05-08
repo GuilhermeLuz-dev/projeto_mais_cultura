@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/form.css" />
+    <title>Crie seu evento | +Cultura</title>
+    <script type="module" crossorigin src="/assets/form-DM9UwRwV.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/firestore-d4sQHgqS.js">
+    <link rel="modulepreload" crossorigin href="/assets/supabaseClient-Dz-n4Q9K.js">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="images/maiscultura.png"
+          alt="Logo do +cultura"
+          class="logo-img-header"
+        />
+      </div>
+    </header>
+    <main class="container">
+      <h1 class="titulo-principal"><strong>CADASTRE SEU EVENTO</strong></h1>
+
+      <div class="info-basic">
+        <h1 class="titulo-informacoes">Informações Básicas</h1>
+
+        <label class="name-event" for="nome">
+          Nome do Evento
+          <input
+            id="eventName"
+            type="text"
+            placeholder="Digite o título do evento..."
+          />
+        </label>
+
+        <label class="description-event" for="descricao">
+          Descrição do Evento
+          <textarea id="descricao" class="description-event-input"></textarea>
+        </label>
+
+        <label class="category-event" for="categoria">
+          Categoria do Evento
+        </label>
+        <select id="categoria" name="categoria" class="input-select">
+          <option value="entretenimento">Música e Entretenimento</option>
+          <option value="esporte">Esporte e lazer</option>
+          <option value="teatro">Teatro</option>
+          <option value="exposicao">Exposição</option>
+          <option value="educacao">Educação e Negócios</option>
+        </select>
+
+        <h2 class="titulo-imagem">Imagem do Evento</h2>
+        <div class="upload-imagem">
+          <label for="imagem-upload" class="upload-label">
+            <img src="images/file.png" alt="Upload" class="upload-icon" />
+            Clique ou arraste a imagem aqui
+          </label>
+          <input
+            type="file"
+            id="imagem-upload"
+            accept="image/*"
+            class="upload-input"
+          />
+          <div id="drop-area" class="texto-tamanho-arquivo">
+            A dimensão recomendada é de 1600 x 838. <br />
+            Formato JPEG, GIF ou PNG de no máximo 2MB.
+          </div>
+        </div>
+      </div>
+
+      <div class="data-horario">
+        <h1 class="titulo-data-horario">Data e horário</h1>
+        <p>Informe ao público a programação do seu evento</p>
+
+        <div class="data-horario-informacoes">
+          <label for="data-inicio" class="label-data">
+            Data de Início
+            <input id="start_date" type="date" />
+          </label>
+          <label for="data-termino" class="label-data">
+            Data de Término
+            <input id="end_date" type="date" />
+          </label>
+          <label for="hora-inicio" class="label-hora">
+            Hora de Início
+            <input id="start_time" type="time" />
+          </label>
+          <label for="hora-termino" class="label-hora">
+            Hora de Término
+            <input id="end_time" type="time" />
+          </label>
+        </div>
+      </div>
+
+      <div class="localizacao">
+        <h1 class="titulo-localizacao">Localização</h1>
+
+        <div class="localizacao-info-mapa">
+          <div class="localizacao-informacoes">
+            <label for="cep" class="label-localizacao">
+              CEP
+              <input id="cep" type="text" />
+            </label>
+            <label for="cidade" class="label-localizacao">
+              Cidade
+              <input id="cidade" type="text" />
+            </label>
+            <label for="bairro" class="label-localizacao">
+              Bairro
+              <input id="bairro" type="text" />
+            </label>
+            <label for="logradouro" class="label-localizacao">
+              Logradouro
+              <input id="logradouro" type="text" />
+            </label>
+            <label for="numero" class="label-localizacao">
+              Número
+              <input id="numero" type="text" />
+            </label>
+            <label for="complemento" class="label-localizacao">
+              Complemento
+              <input id="complemento" type="text" />
+            </label>
+            <label for="local" class="label-localizacao">
+              Nome do local do evento
+              <input id="nomeLocal" type="text" />
+            </label>
+          </div>
+
+          <img
+            src="images/mapa_conquista.jpg"
+            alt="Localização"
+            class="localizacao-mapa"
+          />
+        </div>
+      </div>
+
+      <div class="ingresso">
+        <h1 class="titulo-ingresso">Ingresso</h1>
+        <p>Informe ao público o local de venda dos ingressos</p>
+
+        <div class="ingresso-informacoes">
+          <label for="site-ingresso" class="label-ingresso">
+            Link do site
+            <input type="text" />
+          </label>
+          <label for="tipo-ingresso" class="label-ingresso">
+            Tipo do ingresso
+            <input type="text" />
+          </label>
+          <label for="endereco-ingresso" class="label-ingresso">
+            Endereço de pontos físicos
+            <input type="text" />
+          </label>
+          <label for="nome-ponto-ingresso" class="label-ingresso">
+            Nome do ponto físico
+            <input type="text" />
+          </label>
+        </div>
+
+        <button class="botao-ingresso">Novo ponto de venda</button>
+      </div>
+
+      <div class="organizador">
+        <h1 class="titulo-organizador">Sobre o organizador</h1>
+        <p>Conte um pouco sobre você ou sua empresa</p>
+
+        <div class="organizador-informacoes">
+          <label for="nome-organizador" class="label-organizador">
+            Nome
+            <input id="organizerName" type="text" />
+          </label>
+          <label
+            for="descricao-organizador"
+            class="label-organizador descricao"
+          >
+            Descrição do produtor ou empresa
+            <input id="organizerDesc" type="text" />
+          </label>
+        </div>
+      </div>
+
+      <div class="responsabilidade">
+        <h1 class="titulo-responsabilidade">Responsabilidade</h1>
+        <label for="termos-responsabilidade" class="label-responsabilidade">
+          <input type="checkbox" />
+          Ao publicar este evento, declaro estar de acordo com os Termos de Uso
+          e ciente da Política de Privacidade.
+        </label>
+      </div>
+
+      <button id="btn_cadastrar" class="botao-cadastrar">
+        Publicar Evento
+      </button>
+    </main>
+    <footer>
+      <div class="footer-logo">
+        <img
+          src="images/maiscultura.png"
+          alt="Logo do +Cultura"
+          class="footer-logo-img"
+        />
+      </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/maisculturavc" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@maisculturavc" target="_blank">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      <div class="footer-line"></div>
+      <div class="footer-links">
+        <a href="#">Quem somos?</a>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de uso</a>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>+Cultura</title>
+    <link rel="stylesheet" href="styles/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles/loader.css" />
+    <script type="module" crossorigin src="/assets/index-INVistDH.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/firestore-d4sQHgqS.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CzoE4fA3.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="images/maiscultura.png"
+          alt="Logo do +cultura"
+          class="logo-img-header"
+        />
+      </div>
+      <div id="btns_header_container" class="header-buttons">
+        <a id="addEvent" href="form.html"><button class="btn btn-primary">Crie seu evento</button></a>
+        <a id="loginAndRegister" href="login.html" class="btn btn-secondary">Login ou Cadastro</a>
+      </div>
+    </header>
+    <section id="carroussel" class="slider">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="container-carroussel swiper-slide">
+              <div class="loader"></div>
+              <div class="loading-text">Carregando imagem...</div>
+            </div>
+        </div>
+    </section>
+    <section class="categories">
+      <div class="category-icons">
+        <div>
+          <img src="images/categories/musica.jpeg" alt="Música" />
+          <p>
+            Música e <br />
+            Entretenimento
+          </p>
+        </div>
+        <div>
+          <img src="images/categories/ferramentas-esportivas.jpg" alt="Música" />
+          <p>
+            Esporte e <br />
+            Lazer
+          </p>
+        </div>
+        <div>
+          <img src="images/categories/teatro.jpeg" alt="Teatro" />
+          <p>Teatro</p>
+        </div>
+        <div>
+          <img src="images/categories/exposicao.jpeg" alt="Exposição" />
+          <p>Exposição</p>
+        </div>
+        <div>
+          <img src="images/categories/educacao.jpeg" alt="Negócios" />
+          <p>
+            Educação e <br />
+            Negócios
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="eventsByCategory" class="event-section">
+      <div class="event-category">
+        <div class="event-title">Musica e entretenimento</div>
+        <div id="entertainmentCategoryContainer">
+          <div class="event-cards">
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="event-category">
+        <div class="event-title">Esporte e lazer</div>
+        <div id="sportsCategoryContainer">
+          <div class="event-cards">
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+      <div class="event-category">
+        <div class="event-title">Teatro</div>
+        <div id="theaterCategoryContainer">
+          <div class="event-cards">
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+      <div class="event-category">
+        <div class="event-title">Exposição</div>
+        <div id="exhibitionCategoryContainer">
+          <div class="event-cards">
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+      <div class="event-category">
+        <div class="event-title">Educação e Negócios</div>
+        <div id="educationCategoryContainer">
+          <div class="event-cards">
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+        <div
+          class="event-one-card"
+          data-link="event.html"
+          role="button"
+          tabindex="0"
+        >
+          <div class="container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando imagem...</div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="bg-box">
+      <div class="headline-text">
+        Crie, Divulgue e Alcance <br />
+        mais pessoas com facilidade.
+        <div class="contact-text">
+          Entre em contato e saiba mais sobre como <br />
+          podemos ajudar você a divulgar seu evento.
+        </div>
+        <div class="contact-button">Fale conosco</div>
+        <img class="img-grafico" src="images/grafico.png" alt="Gráfico" />
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo">
+        <img
+          src="images/maiscultura.png"
+          alt="Logo do +Cultura"
+          class="footer-logo-img"
+        />
+      </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/maisculturavc" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="https://www.youtube.com/@maisculturavc" target="_blank"
+          ><i class="fab fa-youtube"></i
+        ></a>
+      </div>
+      <div class="footer-line"></div>
+      <div class="footer-links">
+        <a href="#">Quem somos?</a>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de uso</a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./src/scripts/card.js"></script>
+  </body>
+</html>

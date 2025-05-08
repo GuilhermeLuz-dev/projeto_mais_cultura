@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | +Cultura</title>
+  <link rel="stylesheet" href="styles/login.css"/>
+  <link rel="stylesheet" href="styles/responsivelogin.css"/>
+</head>
+
+<body class="layout-col full-height bg-white">
+  <header>
+    <div class="logo">
+      <img src="images/maiscultura.png" alt="+cultura logo" class="logo-img" />
+    </div>
+  </header>
+    <main class="grow layout-center padding-main">
+      <div class="form-container">
+        <h1 class="title">Cadastre-se</h1>
+        <form class="form-spacing">
+            <div class="input-wrapper">
+                <input id="newName" type="nome" placeholder="Nome" class="input-field" />
+              </div>
+          <div class="input-wrapper">
+            <input id="newEmail" type="email" placeholder="E-mail" class="input-field" />
+          </div>
+          <div class="input-wrapper">
+            <input id="newTel" type="tel" placeholder="Telefone" class="input-field" />
+          </div>
+          <div class="input-wrapper">
+            <input id="newPassword" type="password" placeholder="Senha" class="input-field padding-right" />
+            <button type="button" class="btn-icon" data-handler="handler_0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon-sm" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </div>
+          <button id="btn_cadastro" type="submit" class="btn-primary">Cadastrar</button>
+        </form>
+        <div class="social-login">
+          <button id="button_cadastro_google" type="button" class="btn-google">           
+              Cadastre-se com a conta<img src="images/login/google.png" alt="Google" class="icon">
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-logo">
+        <img src="images/maiscultura.png" alt="Logo do +Cultura" class="footer-logo-img">
+      </div>
+      <div class="footer-line"> </div>
+      <div class="footer-links">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de uso</a>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/pages/register.js"></script>
+</body>
+</html>

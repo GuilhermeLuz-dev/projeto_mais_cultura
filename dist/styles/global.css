@@ -1,0 +1,37 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+form {
+  padding: 10px;
+}
+
+form input,
+form select {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#events_container {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+
+li {
+  width: 24.25%;
+  margin-right: 1%;
+  padding: 10px;
+  border: 1px solid #000;
+}
+
+img {
+  width: 100%;
+}

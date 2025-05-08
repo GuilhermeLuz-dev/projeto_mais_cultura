@@ -1,5 +1,6 @@
 import { searchEvents } from "../firebase/firestore";
 import { configSwiper } from "./swiperConfig";
+import { formatDate } from "./formatDatas";
 
 const carrousselContainer = document.getElementById("carroussel");
 const entertainmentCategoryContainer = document.getElementById(
@@ -17,31 +18,6 @@ const exhibitionCategoryContainer = document.getElementById(
 const educationCategoryContainer = document.getElementById(
   "educationCategoryContainer"
 );
-
-// Formatando datas
-const formatDate = (date) => {
-  const mesesAbreviados = [
-    "JAN",
-    "FEV",
-    "MAR",
-    "ABR",
-    "MAI",
-    "JUN",
-    "JUL",
-    "AGO",
-    "SET",
-    "OUT",
-    "NOV",
-    "DEZ",
-  ];
-
-  // Extrair dia e mês
-  const day = date.getDate();
-  const month = mesesAbreviados[date.getMonth()];
-
-  // Montar a string no formato desejado
-  return `${day} ${month}`;
-};
 
 // Listando os eventos destacados para o carroussel
 const listFeaturedEvents = async (eventsList) => {
@@ -89,6 +65,9 @@ const listEventsByCategory = async (events) => {
   events.forEach((event) => {
     const card = document.createElement("div");
     card.className = "event-one-card";
+    card.addEventListener("click", () => {
+      window.location.href = `event.html?id=${event.id}`;
+    });
 
     const img = document.createElement("img");
     img.src = event.imagemUrl;
@@ -101,7 +80,7 @@ const listEventsByCategory = async (events) => {
 
     const andressAndDateContainer = document.createElement("span");
     const date = formatDate(new Date(event.data.startDate));
-    andressAndDateContainer.innerHTML += `<strong>${date}</strong> | ${event.endereco.nomeLocal}`;
+    andressAndDateContainer.innerHTML += `<strong>${date.day}>${date.month}</strong> | ${event.endereco.nomeLocal}`;
 
     infoContainer.append(title, andressAndDateContainer);
     card.append(img, infoContainer);

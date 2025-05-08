@@ -1,4 +1,4 @@
-import { searchEvents } from "../src/firebase/firestore";
+import { searchEvents } from "../firebase/firestore";
 import { configSwiper } from "./swiperConfig";
 
 const carrousselContainer = document.getElementById("carroussel");

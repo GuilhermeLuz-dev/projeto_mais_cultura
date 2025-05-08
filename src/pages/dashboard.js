@@ -1,4 +1,4 @@
-import { getUserState, deleteAccount } from "../firebase/auth";
+import { getUserState, deleteAccount } from "../firebase/auth.js";
 import {
   searchEvents,
   getEventById,
@@ -7,9 +7,9 @@ import {
   eventEdit,
   addEventToFavorites,
   removeEventFromFavorites,
-} from "../firebase/firestore";
+} from "../firebase/firestore.js";
 
-import { getImageUrl, deleteImage } from "../supabase/supabaseclient";
+import { getImageUrl, deleteImage } from "../supabase/supabaseClient.js";
 
 // Elementos HTML
 const btnUserEvents = document.getElementById("btnUserEvents");

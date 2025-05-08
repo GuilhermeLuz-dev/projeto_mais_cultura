@@ -1,6 +1,6 @@
-import { addNewEvent } from "../firebase/firestore";
-import { getImageUrl } from "../supabase/supabaseclient";
-import { getUserState } from "../firebase/auth";
+import { addNewEvent } from "../firebase/firestore.js";
+import { getImageUrl } from "../supabase/supabaseClient.js";
+import { getUserState } from "../firebase/auth.js";
 
 const btnCadastrar = document.getElementById("btn_cadastrar");
 

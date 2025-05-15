@@ -1,4 +1,4 @@
-import supabase from "./superbaseConfig";
+import supabase from "./superbaseConfig.js";
 
 // Função para fazer upload de imagem
 const uploadImage = async (file) => {

@@ -80,7 +80,7 @@ const listEventsByCategory = async (events) => {
 
     const andressAndDateContainer = document.createElement("span");
     const date = formatDate(new Date(event.data.startDate));
-    andressAndDateContainer.innerHTML += `<strong>${date.day}>${date.month}</strong> | ${event.endereco.nomeLocal}`;
+    andressAndDateContainer.innerHTML += `<strong>${date.day}${date.month}</strong> | ${event.endereco.nomeLocal}`;
 
     infoContainer.append(title, andressAndDateContainer);
     card.append(img, infoContainer);

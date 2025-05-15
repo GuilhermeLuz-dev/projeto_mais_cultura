@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/form.css" />
-    <title>Crie seu evento | +Cultura</title>
+    <title>Edite seu evento</title>
+    <link rel="stylesheet" href="public/styles/form.css" />
+    <link rel="stylesheet" href="public/styles/global.css" />
   </head>
   <body>
     <header>
       <div class="logo">
         <img
-          src="images/maiscultura.png"
+          src="public/images/maiscultura.png"
           alt="Logo do +cultura"
           class="logo-img-header"
         />
       </div>
     </header>
     <main class="container">
-      <h1 class="titulo-principal"><strong>CADASTRE SEU EVENTO</strong></h1>
+      <h1 class="titulo-principal"><strong>EDITE SEU EVENTO</strong></h1>
 
       <div class="info-basic">
         <h1 class="titulo-informacoes">Informações Básicas</h1>
@@ -50,7 +51,11 @@
         <h2 class="titulo-imagem">Imagem do Evento</h2>
         <div class="upload-imagem">
           <label for="imagem-upload" class="upload-label">
-            <img src="images/file.png" alt="Upload" class="upload-icon" />
+            <img
+              src="public/images/file.png"
+              alt="Upload"
+              class="upload-icon"
+            />
             Clique ou arraste a imagem aqui
           </label>
           <input
@@ -126,7 +131,7 @@
           </div>
 
           <img
-            src="images/mapa_conquista.jpg"
+            src="public/images/mapa_conquista.jpg"
             alt="Localização"
             class="localizacao-mapa"
           />
@@ -187,12 +192,13 @@
         </label>
       </div>
 
-      <button id="btnAdd" class="botao-cadastrar">Publicar Evento</button>
+      <button id="btnAdd" class="botao-cadastrar">Salvar Edição</button>
+      <button id="btnCancel" class="botao-cadastrar">Cancelar Edição</button>
     </main>
     <footer>
       <div class="footer-logo">
         <img
-          src="images/maiscultura.png"
+          src="public/images/maiscultura.png"
           alt="Logo do +Cultura"
           class="footer-logo-img"
         />
@@ -212,7 +218,7 @@
         <a href="#">Termos de uso</a>
       </div>
     </footer>
-
-    <script type="module" src="/src/pages/addEvent.js"></script>
+    <script type="module" src="src/pages/addEvent.js"></script>
+    <!-- <script type="module" src="src/pages/formEditEvent.js"></script> -->
   </body>
 </html>

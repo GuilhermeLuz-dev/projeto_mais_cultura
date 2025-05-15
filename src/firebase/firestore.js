@@ -22,9 +22,10 @@ const usersRef = collection(db, "usuarios");
 const addNewEvent = async (event) => {
   try {
     const docRef = await addDoc(eventsRef, event);
-    console.log(`Novo evento adicionado com sucesso: ${docRef.id}`);
+    return true;
   } catch (error) {
     console.error(error);
+    return false;
   }
 };
 
@@ -122,8 +123,10 @@ const eventEdit = async (idEvent, newsDatas) => {
     const eventDocRef = doc(eventsRef, idEvent);
     await updateDoc(eventDocRef, newsDatas);
     console.log(`Evento ${idEvent} editado com sucesso.`);
+    return true;
   } catch (error) {
     console.error("Erro ao editar evento:", error);
+    return false;
   }
 };
 
@@ -152,18 +155,21 @@ const highlightingEvent = async (idEvent) => {
         highlighting = false;
       }
     });
-    console.log(highlighting);
     const eventDocRef = doc(eventsRef, idEvent);
     await updateDoc(eventDocRef, {
       emDestaque: highlighting,
     });
     if (highlighting) {
-      console.log(`Evento ${idEvent} adicionado aos destaques com sucesso.`);
+      const msg = `Evento adicionado aos destaques com sucesso.`;
+      return msg;
     } else {
-      console.log(`Evento ${idEvent} removido dos destaques com sucesso.`);
+      const msg = `Evento removido dos destaques com sucesso.`;
+      return msg;
     }
   } catch (error) {
     console.error("Erro ao adicionar evento aos destaques:", error);
+    const msg = "Erro ao destacar evento";
+    return msg;
   }
 };
 

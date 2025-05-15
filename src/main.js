@@ -11,34 +11,6 @@ import {
 // const btnCreateEvent = document.getElementById("btnCreateEvent");
 // const btnUserControl = document.getElementById("btnUserControl");
 
-const btnsHeaderContainer = document.getElementById("btns_header_container");
-const btnAddEvend = document.getElementById("addEvent");
-const btnLogoutLogin = document.getElementById("loginAndRegister");
-// Função para atualizar o estado da página com base no usuário logado
-const updatePageState = async () => {
-  try {
-    const user = await getUserState();
-    if (user) {
-      console.log("Usuário logado:", user);
-      btnLogoutLogin.href = "";
-      btnLogoutLogin.textContent = "Sair";
-      btnLogoutLogin.addEventListener("click", () => {
-        logout();
-        updatePageState();
-      });
-      btnAddEvend.href = "form.html";
-    } else {
-      console.log("Nenhum usuário logado.");
-      btnLogoutLogin.textContent = "Login ou Cadastro";
-      btnsHeaderContainer.appendChild(btnLogoutLogin);
-      btnLogoutLogin.href = "login.html";
-      btnAddEvend.href = "login.html";
-    }
-  } catch (error) {
-    console.error("Erro ao atualizar o estado da página:", error);
-  }
-};
-
 // Atualizando o estado da página ao fazer logout
 const logoutUser = async () => {
   try {
@@ -122,5 +94,15 @@ const logoutUser = async () => {
 
 // document.getElementById("currentUser").addEventListener("click", getUserState);
 
-// Verificando se há usuário logado
-document.addEventListener("DOMContentLoaded", updatePageState);
+const showFeedback = (message, status) => {
+  const feedbackContainer = document.createElement("div");
+  feedbackContainer.classList.add("feedback-container", status);
+  feedbackContainer.textContent = message;
+  document.body.appendChild(feedbackContainer);
+
+  setTimeout(() => {
+    feedbackContainer.remove();
+  }, 3000);
+};
+
+export { showFeedback };

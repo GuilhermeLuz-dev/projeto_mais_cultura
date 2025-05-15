@@ -20,7 +20,7 @@ const formatDate = (date) => {
   const year = date.getFullYear();
 
   // Montar a string no formato desejado
-  return { day: day, month: month, year: year };
+  return { day: day, month: month, year: year };w
 };
 
 export { formatDate };

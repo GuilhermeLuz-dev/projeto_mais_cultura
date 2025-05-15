@@ -60,17 +60,6 @@ const listUserEvents = (eventsList) => {
 
     // Adicionando evento aos botões
 
-    // Botão de remover evento;
-    btnDelete.addEventListener("click", async () => {
-      if (window.confirm("Tem certeza que deseja deletar?")) {
-        await removeEvent(li.id);
-        await deleteImage(event.imageName);
-        await updateUserPage();
-      } else {
-        alert("Não removido");
-      }
-    });
-
     // Adicionando eventos ao botão de solicitar destaque;
     btnHighlight.addEventListener("click", (e) => {
       if (e.target.textContent == "Solicitar destaque") {

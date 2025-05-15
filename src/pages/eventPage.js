@@ -18,9 +18,12 @@ const endTime = document.getElementById("endTime");
 const getDateTime = (event) => {
   const startDateEvent = formatDate(new Date(event.data.startDate));
   const endDateEvent = formatDate(new Date(event.data.endDate));
-  console.log(!endDateEvent.day);
+
   eventDate.innerHTML = `<p>${startDateEvent.day}</p> <strong>${startDateEvent.month}</strong>`;
-  startDate.innerText = `${startDateEvent.day}/${startDateEvent.month}/${startDateEvent.year}`;
+
+  startDate.innerText = startDateEvent.day
+    ? `${startDateEvent.day}/${startDateEvent.month}/${startDateEvent.year}`
+    : "Sem data de início";
 
   endDate.innerText = endDateEvent.day
     ? `${endDateEvent.day}/${endDateEvent.month}/${endDateEvent.year}`

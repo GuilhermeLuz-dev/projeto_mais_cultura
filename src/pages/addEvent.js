@@ -4,6 +4,7 @@ import { getUserState } from "../firebase/auth.js";
 import { showFeedback } from "../main.js";
 
 const buttonAdd = document.getElementById("btnAdd");
+const feedbackContainer = document.getElementById("feedback");
 
 // Pegando campos do formulário
 const titulo = document.getElementById("eventName");
@@ -101,10 +102,21 @@ buttonAdd.addEventListener("click", async (e) => {
   if (e.target.textContent == "Publicar Evento") {
     const result = await addNewEvent(newEvent);
     if (result) {
-      await showFeedback("Evento adicionado com sucesso!", "success");
-      window.location.href = "index.html";
+      const feedback = await showFeedback(
+        "Evento adicionado com sucesso!",
+        "success"
+      );
+      document.body.appendChild(feedback);
+      setTimeout(() => {
+        feedback.remove();
+        window.location.href = "perfil.html";
+      }, 3000);
     } else {
-      showFeedback("Erro ao adicionar evento", "error");
+      const feedback = await showFeedback("Erro ao adicionar evento", "error");
+      document.body.appendChild(feedback);
+      setTimeout(() => {
+        feedback.remove();
+      }, 3000);
     }
     return;
   }
@@ -117,10 +129,23 @@ buttonAdd.addEventListener("click", async (e) => {
     }
     const result = await eventEdit(currentEvent.id, newEvent);
     if (result) {
-      await showFeedback("Evento editado com sucesso!", "success");
-      window.location.href = "perfil.html";
+      const feedback = await showFeedback(
+        "Evento editado com sucesso!",
+        "success"
+      );
+      console.log(feedback);
+      feedbackContainer.innerHTML = "";
+      feedbackContainer.appendChild(feedback);
+      setTimeout(() => {
+        feedback.remove();
+        window.location.href = "perfil.html";
+      }, 3000);
     } else {
-      showFeedback("Erro ao editar evento", "error");
+      const feedback = showFeedback("Erro ao editar evento", "error");
+      document.body.appendChild(feedback);
+      setTimeout(() => {
+        feedback.remove();
+      }, 3000);
     }
   }
 });

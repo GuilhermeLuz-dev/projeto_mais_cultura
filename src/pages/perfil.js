@@ -9,7 +9,16 @@ import { deleteImage } from "../supabase/supabaseClient";
 import { showFeedback } from "../main";
 
 const nameContainer = document.getElementById("nameContainer");
-const cardsContainer = document.getElementById("eventsCardsContainer");
+const eventsCardsContainer = document.getElementById("eventsCardsContainer");
+const feedbackContainer = document.getElementById("feedback");
+
+const handleFeedback = async (msg, type) => {
+  feedbackContainer.innerHTML = "";
+  feedbackContainer.appendChild(await showFeedback(msg, type));
+  setTimeout(() => {
+    feedbackContainer.innerHTML = "";
+  }, 3000);
+};
 
 // Função que atualiza página do usuário
 const updateUserPage = async () => {
@@ -17,8 +26,9 @@ const updateUserPage = async () => {
   console.log(user);
   if (user) {
     nameContainer.innerHTML = user.nome;
-    cardsContainer.innerHTML = "";
-    listUserEvents(user.uid);
+    const eventsContainer = await listUserEvents(user.uid);
+    eventsCardsContainer.innerHTML = "";
+    eventsCardsContainer.appendChild(eventsContainer);
   } else {
     window.location.href = "index.html";
   }
@@ -30,17 +40,16 @@ const btnUserEventsConfig = (event) => {
 
   // Botão de remover evento;
   const btnDelete = document.createElement("button");
-  btnDelete.classList.add("btn", "btn-primary", "alert");
+  btnDelete.classList.add("btn", "btn-primary");
   btnDelete.textContent = "Deletar";
   btnDelete.addEventListener("click", async () => {
     if (window.confirm("Tem certeza que deseja deletar?")) {
       await removeEvent(event.id);
       await deleteImage(event.imageName);
       await updateUserPage();
-      showFeedback("Evento removido com sucesso!", "success");
-      console.log(event);
+      handleFeedback("Evento removido com sucesso!", "success");
     } else {
-      showFeedback("Evento não removido!", "alert");
+      handleFeedback("Evento não removido!", "alert");
     }
   });
 
@@ -56,32 +65,20 @@ const btnUserEventsConfig = (event) => {
     if (e.target.textContent == "Solicitar destaque") {
       btnHighlight.textContent = "Remover destaque";
       const msg = await highlightingEvent(event.id);
-      showFeedback(msg, "success");
+      handleFeedback(msg, "success");
     } else {
       btnHighlight.textContent = "Solicitar destaque";
       const msg = await highlightingEvent(event.id);
-      showFeedback(msg, "success");
+      handleFeedback(msg, "success");
     }
   });
 
   const btnEdit = document.createElement("button");
-  btnEdit.classList.add("btn", "btn-primary", "success");
+  btnEdit.classList.add("btn", "btn-primary");
   btnEdit.textContent = "Editar";
   // Adicionando evento ao botão de edição;
   btnEdit.addEventListener("click", () => {
     window.location.href = `formEditEvent.html?id=${event.id}`;
-    // formEdit.style.display = "inline";
-    // // Salvando edição
-    // btnSaveEdited.addEventListener("click", async (e) => {
-    //   e.preventDefault();
-    //   const newsData = await getDataForEdit(event.imageName);
-    //   eventEdit(event.id, newsData);
-    // });
-
-    // btnCancelEdited.addEventListener("click", (e) => {
-    //   e.preventDefault();
-    //   formEdit.style.display = "none";
-    // });
   });
 
   btnsContainer.append(btnEdit, btnHighlight, btnDelete);
@@ -91,6 +88,8 @@ const btnUserEventsConfig = (event) => {
 
 const listUserEvents = async (uid) => {
   const events = await searchEvents("userUID", uid);
+  const cardsContainer = document.createElement("div");
+  cardsContainer.className = "event-cards";
   events.forEach((event) => {
     const card = document.createElement("div");
     card.className = "event-card";
@@ -117,9 +116,42 @@ const listUserEvents = async (uid) => {
     card.append(imageContainer, infoContainer, btnUserEventsConfig(event));
     cardsContainer.appendChild(card);
   });
+  return cardsContainer;
+};
+
+const listUserFavorites = async (uid) => {
+  const events = await searchEvents("userUID", uid);
+  const cardsContainer = document.createElement("div");
+  cardsContainer.className = "event-cards";
+  events.forEach((event) => {
+    const card = document.createElement("div");
+    card.className = "event-card";
+
+    const imageContainer = document.createElement("div");
+    imageContainer.className = "image-wrapper";
+
+    const image = document.createElement("img");
+    image.src = event.imagemUrl;
+    image.alt = event.titulo;
+    imageContainer.appendChild(image);
+
+    const infoContainer = document.createElement("div");
+    infoContainer.className = "event-info";
+
+    const title = document.createElement("h3");
+    title.textContent = event.titulo;
+
+    const andressAndDateContainer = document.createElement("span");
+    const date = formatDate(new Date(event.data.startDate));
+    andressAndDateContainer.innerHTML += `<strong>${date.day}${date.month}</strong> | ${event.endereco.nomeLocal}`;
+    infoContainer.append(title, andressAndDateContainer);
+
+    card.append(imageContainer, infoContainer, btnUserEventsConfig(event));
+    cardsContainer.appendChild(card);
+  });
+  return cardsContainer;
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
   updateUserPage();
-  showFeedback("Página carregada com sucesso!");
 });

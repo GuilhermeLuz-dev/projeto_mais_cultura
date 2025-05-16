@@ -98,11 +98,7 @@ const showFeedback = (message, status) => {
   const feedbackContainer = document.createElement("div");
   feedbackContainer.classList.add("feedback-container", status);
   feedbackContainer.textContent = message;
-  document.body.appendChild(feedbackContainer);
-
-  setTimeout(() => {
-    feedbackContainer.remove();
-  }, 3000);
+  return feedbackContainer;
 };
 
 export { showFeedback };

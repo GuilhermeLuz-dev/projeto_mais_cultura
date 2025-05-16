@@ -6,9 +6,10 @@
     <title>Perfil | +Cultura</title>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8d7xj1z5l5e5c5e5e5e5e5e5e5e5e5e5e5" crossorigin="anonymous" /> -->
     <!-- <link rel="stylesheet" href="css/responsividade/r_perfil.css" /> -->
-    <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="./public/styles/header.css" />
     <link rel="stylesheet" href="./public/styles/perfil.css" />
+    <link rel="stylesheet" href="styles/loader.css" />
+    <link rel="stylesheet" href="styles/global.css" />
   </head>
   <body>
     <header>
@@ -37,7 +38,10 @@
         <div class="profile-header">
           <h1>Bem-vindo, <span id="nameContainer"></span></h1>
           <div class="btn-container">
-            <a href="form.html" class="btn btn-primary">Sua Conta</a>
+            <button id="btnEventUser" class="btn btn-primary">
+              Meus eventos
+            </button>
+            <button id="btnFavorite" class="btn btn-primary">Favoritos</button>
           </div>
         </div>
       </section>
@@ -45,119 +49,19 @@
       <hr class="my-8 border-gray" />
       <section class="event-section">
         <div class="event-title">Meus Eventos</div>
-        <div id="eventsCardsContainer" class="event-cards">
-          <div class="event-card">
-            <div class="image-wrapper">
-              <img src="img/events/revoada.jpg" alt="Card da Miconquista" />
-            </div>
-            <div class="event-info">
-              <h3>Revoada do 01</h3>
-              <span><strong>17 MAI</strong> | Parque de Exposições</span>
-            </div>
-          </div>
-          <div
-            class="event-card"
-            data-link="reset.html"
-            role="button"
-            tabindex="0"
-          >
-            <div class="image-wrapper">
-              <img src="img/events/reset.png" alt="Card da RESET Conference" />
-              <div class="heart-icon-gradient" aria-label="Favoritar evento">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                            2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09
-                            C13.09 3.81 14.76 3 16.5 3
-                            19.58 3 22 5.42 22 8.5
-                            c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                    stroke="black"
-                    stroke-width="2"
-                    fill="none"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="event-info">
-              <h3>RESET Conference</h3>
-              <span
-                ><strong>24 a 27 JUL</strong> | Igreja Batista Nacional
-                Candeias</span
-              >
-            </div>
-            <div class="btns-events-container">
-              <button class="btn btn-primary">Excluir</button>
-              <button class="btn btn-primary">Destacar</button>
-              <button class="btn btn-primary">Editar</button>
-            </div>
-          </div>
-
-          <div
-            class="event-card"
-            data-link="fib.html"
-            role="button"
-            tabindex="0"
-          >
-            <div class="image-wrapper">
-              <img src="img/events/fib25.png" alt="Card do FIB" />
-              <div class="heart-icon-gradient" aria-label="Favoritar evento">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                            2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09
-                            C13.09 3.81 14.76 3 16.5 3
-                            19.58 3 22 5.42 22 8.5
-                            c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                    stroke="black"
-                    stroke-width="2"
-                    fill="none"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="event-info">
-              <h3>Festival de Inverno da Bahia</h3>
-              <span><strong>22 a 24 AGO</strong> | Parque de Exposições</span>
-            </div>
-          </div>
-          <div
-            class="event-card"
-            data-link="jorgeemateus.html"
-            role="button"
-            tabindex="0"
-          >
-            <div class="image-wrapper">
-              <img
-                src="img/events/jEm.jpg"
-                alt="Card da Turnê de Jorge e Mateus"
-              />
-              <div class="heart-icon-gradient" aria-label="Favoritar evento">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                            2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09
-                            C13.09 3.81 14.76 3 16.5 3
-                            19.58 3 22 5.42 22 8.5
-                            c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                    stroke="black"
-                    stroke-width="2"
-                    fill="none"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="event-info">
-              <h3>Jorge e Mateus - 20 Anos</h3>
-              <span><strong>07 NOV</strong> | Boulevard Shopping</span>
-            </div>
+        <div id="eventsCardsContainer">
+          <div class="loader-container">
+            <div class="loader"></div>
+            <div class="loading-text">Carregando eventos...</div>
           </div>
         </div>
       </section>
+      <div id="feedback"></div>
     </main>
     <footer class="footer">
       <div class="footer-logo">
         <img
-          src="img/maiscultura.png"
+          src="public/images/maiscultura.png"
           alt="Logo do +Cultura"
           class="footer-logo-img"
         />

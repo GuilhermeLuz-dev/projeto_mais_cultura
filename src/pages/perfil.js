@@ -10,7 +10,7 @@ import { showFeedback } from "../main";
 
 const nameContainer = document.getElementById("nameContainer");
 const eventsCardsContainer = document.getElementById("eventsCardsContainer");
-const feedbackContainer = document.getElementById("feedback");
+const feedbackContainer = document.getElementById("feedbackContainer");
 
 const handleFeedback = async (msg, type) => {
   feedbackContainer.innerHTML = "";
@@ -62,6 +62,7 @@ const btnUserEventsConfig = (event) => {
     : "Solicitar destaque";
 
   btnHighlight.addEventListener("click", async (e) => {
+    handleFeedback("Aguarde um momento...", "success");
     if (e.target.textContent == "Solicitar destaque") {
       btnHighlight.textContent = "Remover destaque";
       const msg = await highlightingEvent(event.id);
@@ -96,6 +97,9 @@ const listUserEvents = async (uid) => {
 
     const imageContainer = document.createElement("div");
     imageContainer.className = "image-wrapper";
+    imageContainer.addEventListener("click", () => {
+      window.location.href = `event.html?id=${event.id}`;
+    });
 
     const image = document.createElement("img");
     image.src = event.imagemUrl;

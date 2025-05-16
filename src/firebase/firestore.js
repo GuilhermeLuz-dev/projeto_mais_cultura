@@ -112,8 +112,10 @@ const addEventToFavorites = async (idEvent) => {
       favoritos: arrayUnion(idEvent),
     });
     console.log(`Evento ${idEvent} adicionado aos favoritos com sucesso.`);
+    return true;
   } catch (error) {
     console.error("Erro ao adicionar evento aos favoritos:", error);
+    return false;
   }
 };
 
@@ -140,8 +142,10 @@ const removeEventFromFavorites = async (idEvent) => {
       favoritos: arrayRemove(idEvent),
     });
     console.log(`Evento ${idEvent} removido dos favoritos com sucesso.`);
+    return true;
   } catch (error) {
     console.error("Erro ao remover evento dos favoritos:", error);
+    return false;
   }
 };
 

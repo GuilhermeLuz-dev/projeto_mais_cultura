@@ -1,8 +1,15 @@
-import { searchEvents } from "../firebase/firestore";
+import {
+  searchEvents,
+  addEventToFavorites,
+  removeEventFromFavorites,
+} from "../firebase/firestore";
 import { configSwiper } from "./swiperConfig";
 import { formatDate } from "./formatDatas";
+import { getUserState } from "../firebase/auth";
+import { showFeedback } from "../main";
 
 const carrousselContainer = document.getElementById("carroussel");
+const feedbackContainer = document.getElementById("feedbackContainer");
 const entertainmentCategoryContainer = document.getElementById(
   "entertainmentCategoryContainer"
 );
@@ -59,19 +66,75 @@ const listFeaturedEvents = async (eventsList) => {
   return swiper;
 };
 
+const handleFeedback = (message, type) => {
+  feedbackContainer.innerHTML = "";
+  feedbackContainer.appendChild(showFeedback(message, type));
+  setTimeout(() => {
+    feedbackContainer.innerHTML = "";
+  }, 3000);
+};
+
+// Função que adiciona evento aos favoritos
+const handleFavorite = async (idEvent, icon, user) => {
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  handleFeedback("Aguarde um momento...", "alert");
+  if (icon.src.includes("favorited")) {
+    icon.src = "images/icons/heart.png";
+    const result = await removeEventFromFavorites(idEvent);
+    if (result) {
+      handleFeedback("Evento removido dos favoritos com sucesso.", "success");
+    } else {
+      handleFeedback("Erro ao remover evento dos favoritos.", "alert");
+    }
+  } else {
+    const result = await addEventToFavorites(idEvent);
+    icon.src = "images/icons/favorited.png";
+    if (result) {
+      handleFeedback("Evento adicionado aos favoritos com sucesso.", "success");
+    } else {
+      handleFeedback("Erro ao adicionar evento aos favoritos.", "alert");
+    }
+  }
+};
+
 const listEventsByCategory = async (events) => {
+  const user = await getUserState();
   const categoryContainer = document.createElement("div");
   categoryContainer.className = "event-cards";
   events.forEach((event) => {
+    // Criando card
     const card = document.createElement("div");
     card.className = "event-one-card";
-    card.addEventListener("click", () => {
-      window.location.href = `event.html?id=${event.id}`;
+    card.addEventListener("click", (e) => {
+      e.target.className == "favorite-icon"
+        ? null
+        : e.target.className == "favorite-container"
+        ? null
+        : (window.location.href = `event.html?id=${event.id}`);
     });
-
+    // Criando imagem do card com icone de favoritar
     const img = document.createElement("img");
     img.src = event.imagemUrl;
 
+    const favoriteContainer = document.createElement("div");
+    favoriteContainer.className = "favorite-container";
+    const favoriteIcon = document.createElement("img");
+
+    favoriteIcon.src = user.favoritos.includes(event.id)
+      ? "./public/images/icons/favorited.png"
+      : "./public/images/icons/heart.png";
+
+    favoriteIcon.className = "favorite-icon";
+    favoriteIcon.addEventListener("click", (e) => {
+      handleFavorite(event.id, e.target, user);
+    });
+    favoriteContainer.appendChild(favoriteIcon);
+
+    // Criando containers de infromações do evento
     const infoContainer = document.createElement("div");
     infoContainer.className = "event-info";
 
@@ -82,8 +145,9 @@ const listEventsByCategory = async (events) => {
     const date = formatDate(new Date(event.data.startDate));
     andressAndDateContainer.innerHTML += `<strong>${date.day}${date.month}</strong> | ${event.endereco.nomeLocal}`;
 
+    // Adicionando os elementos criados ao card
     infoContainer.append(title, andressAndDateContainer);
-    card.append(img, infoContainer);
+    card.append(img, infoContainer, favoriteContainer);
     categoryContainer.appendChild(card);
   });
   return categoryContainer;

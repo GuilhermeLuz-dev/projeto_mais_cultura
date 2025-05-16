@@ -42,27 +42,33 @@ img {
   width: 100%;
 }
 
+#feedbackContainer {
+  text-align: center;
+  font-size: 16px;
+
+  color: white;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+.feedback {
+  position: fixed;
+  padding: 10px;
+  border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 150px;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
 .success {
   background-color: #1e8b1e;
 }
 
 .alert {
   background-color: #a81818;
-}
-
-#feedback {
-  width: 100%;
-  max-width: 600px;
-  margin: 20px auto;
-}
-.feedback-container {
-  text-align: center;
-  font-size: 16px;
-  padding: 10px;
-  border-radius: 5px;
-  color: white;
-  opacity: 0;
-  animation: fadeIn 0.5s forwards;
 }
 
 @keyframes fadeIn {

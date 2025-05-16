@@ -4,7 +4,7 @@ import { getUserState } from "../firebase/auth.js";
 import { showFeedback } from "../main.js";
 
 const buttonAdd = document.getElementById("btnAdd");
-const feedbackContainer = document.getElementById("feedback");
+const feedbackContainer = document.getElementById("feedbackContainer");
 
 // Pegando campos do formulário
 const titulo = document.getElementById("eventName");
@@ -23,6 +23,14 @@ const complemento = document.getElementById("complemento");
 const nomeLocal = document.getElementById("nomeLocal");
 const name = document.getElementById("organizerName");
 const desc = document.getElementById("organizerDesc");
+
+const handleFeedback = (message, type) => {
+  feedbackContainer.innerHTML = "";
+  feedbackContainer.appendChild(showFeedback(message, type));
+  setTimeout(() => {
+    feedbackContainer.innerHTML = "";
+  }, 3000);
+};
 
 const getCurrentEvent = async () => {
   const params = new URLSearchParams(window.location.search);
@@ -73,6 +81,7 @@ const getOrganizerData = () => {
 
 // Adicionando novo evento
 buttonAdd.addEventListener("click", async (e) => {
+  handleFeedback("Adicionando evento...", "success");
   const tituloValue = titulo.value;
   const descricaoValue = descricao.value;
   const categoriaValue = categoria.value;
@@ -102,21 +111,12 @@ buttonAdd.addEventListener("click", async (e) => {
   if (e.target.textContent == "Publicar Evento") {
     const result = await addNewEvent(newEvent);
     if (result) {
-      const feedback = await showFeedback(
-        "Evento adicionado com sucesso!",
-        "success"
-      );
-      document.body.appendChild(feedback);
+      handleFeedback("Evento adicionado com sucesso!", "success");
       setTimeout(() => {
-        feedback.remove();
         window.location.href = "perfil.html";
       }, 3000);
     } else {
-      const feedback = await showFeedback("Erro ao adicionar evento", "error");
-      document.body.appendChild(feedback);
-      setTimeout(() => {
-        feedback.remove();
-      }, 3000);
+      handleFeedback("Erro ao adicionar evento", "alert");
     }
     return;
   }
@@ -129,23 +129,12 @@ buttonAdd.addEventListener("click", async (e) => {
     }
     const result = await eventEdit(currentEvent.id, newEvent);
     if (result) {
-      const feedback = await showFeedback(
-        "Evento editado com sucesso!",
-        "success"
-      );
-      console.log(feedback);
-      feedbackContainer.innerHTML = "";
-      feedbackContainer.appendChild(feedback);
+      handleFeedback("Evento editado com sucesso!", "success");
       setTimeout(() => {
-        feedback.remove();
         window.location.href = "perfil.html";
       }, 3000);
     } else {
-      const feedback = showFeedback("Erro ao editar evento", "error");
-      document.body.appendChild(feedback);
-      setTimeout(() => {
-        feedback.remove();
-      }, 3000);
+      handleFeedback("Erro ao editar evento", "alert");
     }
   }
 });

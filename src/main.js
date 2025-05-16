@@ -96,7 +96,7 @@ const logoutUser = async () => {
 
 const showFeedback = (message, status) => {
   const feedbackContainer = document.createElement("div");
-  feedbackContainer.classList.add("feedback-container", status);
+  feedbackContainer.classList.add("feedback", status);
   feedbackContainer.textContent = message;
   return feedbackContainer;
 };

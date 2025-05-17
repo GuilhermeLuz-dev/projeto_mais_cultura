@@ -84,7 +84,6 @@ const handleSignInWithGoogle = async () => {
       alert("Usuário não cadastrado, faça o cadastro!");
       return false;
     } else {
-      alert("Bem vindo de volta " + user.displayName);
       return true;
     }
   } catch (error) {

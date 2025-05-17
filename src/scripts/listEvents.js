@@ -101,6 +101,25 @@ const handleFavorite = async (idEvent, icon, user) => {
   }
 };
 
+const handleIcon = (icon, user, id) => {
+  const favorited = "./public/images/icons/favorited.png";
+  const notFavorited = "./public/images/icons/heart.png";
+
+  if (user) {
+    if (user.favoritos) {
+      if (user.favoritos.includes(id)) {
+        icon.src = favorited;
+      } else {
+        icon.src = notFavorited;
+      }
+    } else {
+      icon.src = notFavorited;
+    }
+  } else {
+    icon.src = notFavorited;
+  }
+};
+
 const listEventsByCategory = async (events) => {
   const user = await getUserState();
   const categoryContainer = document.createElement("div");
@@ -123,12 +142,7 @@ const listEventsByCategory = async (events) => {
     const favoriteContainer = document.createElement("div");
     favoriteContainer.className = "favorite-container";
     const favoriteIcon = document.createElement("img");
-
-    favoriteIcon.src = user
-      ? user.favoritos.includes(event.id)
-        ? "./public/images/icons/favorited.png"
-        : "./public/images/icons/heart.png"
-      : "./public/images/icons/heart.png";
+    handleIcon(favoriteIcon, user, event.id);
 
     favoriteIcon.className = "favorite-icon";
     favoriteIcon.addEventListener("click", (e) => {

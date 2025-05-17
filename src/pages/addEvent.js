@@ -81,7 +81,7 @@ const getOrganizerData = () => {
 
 // Adicionando novo evento
 buttonAdd.addEventListener("click", async (e) => {
-  handleFeedback("Adicionando evento...", "success");
+  handleFeedback("Adicionando evento...", "info");
   const tituloValue = titulo.value;
   const descricaoValue = descricao.value;
   const categoriaValue = categoria.value;

@@ -71,6 +71,10 @@ img {
   background-color: #a81818;
 }
 
+.info {
+  background-color: #1326b6;
+}
+
 @keyframes fadeIn {
   to {
     opacity: 1;

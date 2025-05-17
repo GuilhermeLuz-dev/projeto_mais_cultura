@@ -81,7 +81,7 @@ const handleFavorite = async (idEvent, icon, user) => {
     return;
   }
 
-  handleFeedback("Aguarde um momento...", "alert");
+  handleFeedback("Aguarde um momento...", "info");
   if (icon.src.includes("favorited")) {
     icon.src = "images/icons/heart.png";
     const result = await removeEventFromFavorites(idEvent);
@@ -124,13 +124,19 @@ const listEventsByCategory = async (events) => {
     favoriteContainer.className = "favorite-container";
     const favoriteIcon = document.createElement("img");
 
-    favoriteIcon.src = user.favoritos.includes(event.id)
-      ? "./public/images/icons/favorited.png"
+    favoriteIcon.src = user
+      ? user.favoritos.includes(event.id)
+        ? "./public/images/icons/favorited.png"
+        : "./public/images/icons/heart.png"
       : "./public/images/icons/heart.png";
 
     favoriteIcon.className = "favorite-icon";
     favoriteIcon.addEventListener("click", (e) => {
-      handleFavorite(event.id, e.target, user);
+      if (user) {
+        handleFavorite(event.id, e.target, user);
+      } else {
+        window.location.href = "login.html";
+      }
     });
     favoriteContainer.appendChild(favoriteIcon);
 

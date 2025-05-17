@@ -1,8 +1,21 @@
 .event-one-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   position: relative;
   max-width: 300px;
   background-color: #e4e2e2;
   border-radius: 16px;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -12,10 +25,6 @@
   width: 100%;
   height: 160px;
   object-fit: cover;
-}
-
-.image-wrapper {
-  cursor: pointer;
 }
 
 .event-info {
@@ -55,4 +64,11 @@
 .favorite-icon {
   width: 100%;
   object-fit: contain;
+}
+
+.btns-events-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
 }

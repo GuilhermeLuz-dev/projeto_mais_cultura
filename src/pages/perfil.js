@@ -3,6 +3,9 @@ import {
   searchEvents,
   removeEvent,
   highlightingEvent,
+  getEventById,
+  addEventToFavorites,
+  removeEventFromFavorites,
 } from "../firebase/firestore";
 import { formatDate } from "../scripts/formatDatas";
 import { deleteImage } from "../supabase/supabaseClient";
@@ -11,6 +14,8 @@ import { showFeedback } from "../main";
 const nameContainer = document.getElementById("nameContainer");
 const eventsCardsContainer = document.getElementById("eventsCardsContainer");
 const feedbackContainer = document.getElementById("feedbackContainer");
+const btnUserEvents = document.getElementById("btnUserEvents");
+const btnFavorite = document.getElementById("btnFavorite");
 
 const handleFeedback = async (msg, type) => {
   feedbackContainer.innerHTML = "";
@@ -24,9 +29,14 @@ const handleFeedback = async (msg, type) => {
 const updateUserPage = async () => {
   const user = await getUserState();
   console.log(user);
+  let eventsContainer;
   if (user) {
     nameContainer.innerHTML = user.nome;
-    const eventsContainer = await listUserEvents(user.uid);
+    if (btnUserEvents.classList.contains("btn-active")) {
+      eventsContainer = await listUserEvents(user.uid);
+    } else {
+      eventsContainer = await listUserFavorites(user.uid);
+    }
     eventsCardsContainer.innerHTML = "";
     eventsCardsContainer.appendChild(eventsContainer);
   } else {
@@ -44,6 +54,7 @@ const btnUserEventsConfig = (event) => {
   btnDelete.textContent = "Deletar";
   btnDelete.addEventListener("click", async () => {
     if (window.confirm("Tem certeza que deseja deletar?")) {
+      handleFeedback("Aguarde um momento...", "info");
       await removeEvent(event.id);
       await deleteImage(event.imageName);
       await updateUserPage();
@@ -62,7 +73,7 @@ const btnUserEventsConfig = (event) => {
     : "Solicitar destaque";
 
   btnHighlight.addEventListener("click", async (e) => {
-    handleFeedback("Aguarde um momento...", "success");
+    handleFeedback("Aguarde um momento...", "info");
     if (e.target.textContent == "Solicitar destaque") {
       btnHighlight.textContent = "Remover destaque";
       const msg = await highlightingEvent(event.id);
@@ -93,7 +104,7 @@ const listUserEvents = async (uid) => {
   cardsContainer.className = "event-cards";
   events.forEach((event) => {
     const card = document.createElement("div");
-    card.className = "event-card";
+    card.className = "event-one-card";
 
     const imageContainer = document.createElement("div");
     imageContainer.className = "image-wrapper";
@@ -123,13 +134,56 @@ const listUserEvents = async (uid) => {
   return cardsContainer;
 };
 
-const listUserFavorites = async (uid) => {
-  const events = await searchEvents("userUID", uid);
+// Função que adiciona evento aos favoritos
+const handleFavorite = async (idEvent, icon, user) => {
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  handleFeedback("Aguarde um momento...", "info");
+  if (icon.src.includes("favorited")) {
+    icon.src = "images/icons/heart.png";
+    const result = await removeEventFromFavorites(idEvent);
+    if (result) {
+      handleFeedback("Evento removido dos favoritos com sucesso.", "success");
+    } else {
+      handleFeedback("Erro ao remover evento dos favoritos.", "alert");
+    }
+  } else {
+    const result = await addEventToFavorites(idEvent);
+    icon.src = "images/icons/favorited.png";
+    if (result) {
+      handleFeedback("Evento adicionado aos favoritos com sucesso.", "success");
+    } else {
+      handleFeedback("Erro ao adicionar evento aos favoritos.", "alert");
+    }
+  }
+  updateUserPage();
+};
+
+const listUserFavorites = async () => {
+  const user = await getUserState();
+
+  const favorites = user.favoritos;
+
+  const eventsFavorites = [];
+
+  console.log(favorites);
+  for (const favorite of favorites) {
+    const event = await getEventById(favorite);
+    if (event) {
+      eventsFavorites.push({ ...event, id: favorite });
+    }
+  }
+
   const cardsContainer = document.createElement("div");
   cardsContainer.className = "event-cards";
-  events.forEach((event) => {
+
+  console.log(eventsFavorites);
+  eventsFavorites.forEach((event) => {
     const card = document.createElement("div");
-    card.className = "event-card";
+    card.className = "event-one-card";
 
     const imageContainer = document.createElement("div");
     imageContainer.className = "image-wrapper";
@@ -138,6 +192,20 @@ const listUserFavorites = async (uid) => {
     image.src = event.imagemUrl;
     image.alt = event.titulo;
     imageContainer.appendChild(image);
+
+    const favoriteContainer = document.createElement("div");
+    favoriteContainer.className = "favorite-container";
+    const favoriteIcon = document.createElement("img");
+
+    favoriteIcon.src = user.favoritos.includes(event.id)
+      ? "./public/images/icons/favorited.png"
+      : "./public/images/icons/heart.png";
+
+    favoriteIcon.className = "favorite-icon";
+    favoriteIcon.addEventListener("click", (e) => {
+      handleFavorite(event.id, e.target, user);
+    });
+    favoriteContainer.appendChild(favoriteIcon);
 
     const infoContainer = document.createElement("div");
     infoContainer.className = "event-info";
@@ -150,11 +218,26 @@ const listUserFavorites = async (uid) => {
     andressAndDateContainer.innerHTML += `<strong>${date.day}${date.month}</strong> | ${event.endereco.nomeLocal}`;
     infoContainer.append(title, andressAndDateContainer);
 
-    card.append(imageContainer, infoContainer, btnUserEventsConfig(event));
+    card.append(imageContainer, infoContainer, favoriteContainer);
     cardsContainer.appendChild(card);
   });
   return cardsContainer;
 };
+
+btnFavorite.addEventListener("click", async () => {
+  handleFeedback("Aguarde um momento...", "info");
+  btnUserEvents.classList.remove("btn-active");
+  btnFavorite.classList.add("btn-active");
+  updateUserPage();
+});
+
+btnUserEvents.addEventListener("click", async () => {
+  handleFeedback("Aguarde um momento...", "info");
+
+  btnUserEvents.classList.add("btn-active");
+  btnFavorite.classList.remove("btn-active");
+  updateUserPage();
+});
 
 document.addEventListener("DOMContentLoaded", async () => {
   updateUserPage();

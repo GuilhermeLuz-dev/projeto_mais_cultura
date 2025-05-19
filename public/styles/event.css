@@ -160,7 +160,7 @@ header {
 
 .event-details {
   display: flex;
-  justify-content: center;
+  justify-content: start;
 }
 
 .section-policy {

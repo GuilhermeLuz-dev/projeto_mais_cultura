@@ -90,28 +90,40 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 20px 0;
+  gap: 30px;
   border-radius: 90px 90px 0 0;
+  padding: 40px 0;
+}
+
+.footer-icons-logo {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-logo img {
   max-width: 150px;
   height: auto;
-  margin-bottom: 30px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.fa-youtube,
+.fa-instagram {
+  color: white;
+  font-size: x-large;
 }
 
 .footer-line {
-  position: absolute;
-  left: 51%;
   width: 1.25px;
   height: 120px;
   background-color: white;
 }
 
 .footer-links {
-  position: absolute;
-  left: 55vw; /* aumente conforme desejar */
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -127,20 +139,4 @@ footer {
 
 .footer-links a:hover {
   text-decoration: underline;
-}
-
-.social-icons .fa-instagram {
-  color: white;
-  position: absolute;
-  left: 39.5vw;
-  top: 6.5vw;
-  font-size: x-large;
-}
-
-.social-icons .fa-youtube {
-  color: white;
-  position: absolute;
-  left: 42vw;
-  top: 6.5vw;
-  font-size: x-large;
 }

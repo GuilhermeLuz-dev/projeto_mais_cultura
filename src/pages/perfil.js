@@ -28,14 +28,21 @@ const handleFeedback = async (msg, type) => {
 // Função que atualiza página do usuário
 const updateUserPage = async () => {
   const user = await getUserState();
-  console.log(user);
   let eventsContainer;
   if (user) {
     nameContainer.innerHTML = user.nome;
     if (btnUserEvents.classList.contains("btn-active")) {
       eventsContainer = await listUserEvents(user.uid);
+      if (eventsContainer.children.length == 0) {
+        eventsContainer.innerHTML =
+          "<h2>Você ainda não criou nenhum evento!</h2>";
+      }
     } else {
       eventsContainer = await listUserFavorites(user.uid);
+      if (eventsContainer.children.length == 0) {
+        eventsContainer.innerHTML =
+          "<h2>Você ainda não favoritou nenhum evento!</h2>";
+      }
     }
     eventsCardsContainer.innerHTML = "";
     eventsCardsContainer.appendChild(eventsContainer);
@@ -67,7 +74,6 @@ const btnUserEventsConfig = (event) => {
   // Botão de solicitar destaque;
   const btnHighlight = document.createElement("button");
   btnHighlight.classList.add("btn", "btn-primary");
-  console.log(event.emDestaque);
   btnHighlight.textContent = event.emDestaque
     ? "Remover destaque"
     : "Solicitar destaque";
@@ -165,11 +171,10 @@ const handleFavorite = async (idEvent, icon, user) => {
 const listUserFavorites = async () => {
   const user = await getUserState();
 
-  const favorites = user.favoritos;
+  const favorites = user.favoritos || [];
 
   const eventsFavorites = [];
 
-  console.log(favorites);
   for (const favorite of favorites) {
     const event = await getEventById(favorite);
     if (event) {
@@ -180,7 +185,6 @@ const listUserFavorites = async () => {
   const cardsContainer = document.createElement("div");
   cardsContainer.className = "event-cards";
 
-  console.log(eventsFavorites);
   eventsFavorites.forEach((event) => {
     const card = document.createElement("div");
     card.className = "event-one-card";

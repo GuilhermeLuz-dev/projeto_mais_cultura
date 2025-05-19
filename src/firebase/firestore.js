@@ -97,7 +97,6 @@ const getUserData = async (uid) => {
   querySnapshot.forEach((doc) => {
     data.push(doc.data());
   });
-  console.log(data);
 
   return data;
 };

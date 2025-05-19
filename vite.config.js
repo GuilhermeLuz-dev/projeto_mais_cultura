@@ -11,6 +11,7 @@ export default defineConfig({
         index: resolve(__dirname, "index.html"),
         login: resolve(__dirname, "login.html"),
         form: resolve(__dirname, "form.html"),
+        formEdit: resolve(__dirname, "formEditEvent.html"),
         register: resolve(__dirname, "register.html"),
         dashboard: resolve(__dirname, "dashboard.html"),
         event: resolve(__dirname, "event.html"),

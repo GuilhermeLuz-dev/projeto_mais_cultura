@@ -198,8 +198,8 @@ const listUserFavorites = async () => {
     const favoriteIcon = document.createElement("img");
 
     favoriteIcon.src = user.favoritos.includes(event.id)
-      ? "./public/images/icons/favorited.png"
-      : "./public/images/icons/heart.png";
+      ? "./images/icons/favorited.png"
+      : "./images/icons/heart.png";
 
     favoriteIcon.className = "favorite-icon";
     favoriteIcon.addEventListener("click", (e) => {

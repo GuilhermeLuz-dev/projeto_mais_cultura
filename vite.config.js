@@ -14,6 +14,7 @@ export default defineConfig({
         register: resolve(__dirname, "register.html"),
         dashboard: resolve(__dirname, "dashboard.html"),
         event: resolve(__dirname, "event.html"),
+        category: resolve(__dirname, "category.html"),
       },
     },
   },

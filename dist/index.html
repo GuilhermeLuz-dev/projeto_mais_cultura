@@ -13,23 +13,31 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/loader.css" />
-    <script type="module" crossorigin src="/assets/index-INVistDH.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/firestore-d4sQHgqS.js">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/card_styles.css">
+    <script type="module" crossorigin src="/assets/index-DCB9Fvkg.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/firestore-BpOEQaOI.js">
+    <link rel="modulepreload" crossorigin href="/assets/header-CBgfAYu6.js">
+    <link rel="modulepreload" crossorigin href="/assets/main-fGrksW3e.js">
     <link rel="stylesheet" crossorigin href="/assets/index-CzoE4fA3.css">
   </head>
   <body>
     <header>
-      <div class="logo">
-        <img
-          src="images/maiscultura.png"
-          alt="Logo do +cultura"
-          class="logo-img-header"
-        />
-      </div>
+      <a href="index.html">
+        <div class="logo">
+          <img
+            src="images/maiscultura.png"
+            alt="Logo do +cultura"
+            class="logo-img-header"
+          />
+        </div>
+      </a>
       <div id="btns_header_container" class="header-buttons">
         <a id="addEvent" href="form.html"><button class="btn btn-primary">Crie seu evento</button></a>
-        <a id="loginAndRegister" href="login.html" class="btn btn-secondary">Login ou Cadastro</a>
+        <a  href="login.html" ><button id="loginAndRegister" class="btn btn-secondary">Login ou Cadastro</button></a>
+        <a href="./perfil.html" id="userIcon" class="user-icon" ><img src="/assets/user-BM5qj4o9.png" alt="Icone do usuário"><span>User</span></a>
       </div>
     </header>
     <section id="carroussel" class="slider">
@@ -37,41 +45,41 @@
         <div class="swiper-wrapper">
             <div class="container-carroussel swiper-slide">
               <div class="loader"></div>
-              <div class="loading-text">Carregando imagem...</div>
+              <div class="loading-text">Carregando eventos...</div>
             </div>
         </div>
     </section>
     <section class="categories">
       <div class="category-icons">
-        <div>
+        <a href="category.html?category=musica&desc=Música%20e%20entretenimento">
           <img src="images/categories/musica.jpeg" alt="Música" />
           <p>
             Música e <br />
             Entretenimento
           </p>
-        </div>
-        <div>
+        </a>
+        <a href="category.html?category=esporte&desc=Esporte%20e%20lazer">
           <img src="images/categories/ferramentas-esportivas.jpg" alt="Música" />
           <p>
             Esporte e <br />
             Lazer
           </p>
-        </div>
-        <div>
+        </a>
+        <a href="category.html?category=teatro&desc=Teatro">
           <img src="images/categories/teatro.jpeg" alt="Teatro" />
           <p>Teatro</p>
-        </div>
-        <div>
+        </a>
+        <a href="category.html?category=exposicao&desc=Exposição">
           <img src="images/categories/exposicao.jpeg" alt="Exposição" />
           <p>Exposição</p>
-        </div>
-        <div>
+        </a>
+        <a href="category.html?category=educacao&desc=Educação%20e%20Negócios">
           <img src="images/categories/educacao.jpeg" alt="Negócios" />
           <p>
             Educação e <br />
             Negócios
           </p>
-        </div>
+        </a>
       </div>
     </section>
     <section id="eventsByCategory" class="event-section">
@@ -79,80 +87,35 @@
         <div class="event-title">Musica e entretenimento</div>
         <div id="entertainmentCategoryContainer">
           <div class="event-cards">
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
-        </div>
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
-        </div>
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
-        </div>
+            <div
+              class="loader-container"
+              data-link="event.html"
+              role="button"
+              tabindex="0"
+            >
+              <div class="container ">
+                <div class="loader"></div>
+                <div class="loading-text">Carregando Eventos...</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
       <div class="event-category">
         <div class="event-title">Esporte e lazer</div>
         <div id="sportsCategoryContainer">
           <div class="event-cards">
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
-        </div>
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
-        </div>
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
-        </div>
+            <div
+              class="loader-container"
+              data-link="event.html"
+              role="button"
+              tabindex="0"
+            >
+              <div class="container">
+                <div class="loader"></div>
+                <div class="loading-text">Carregando eventos...</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -161,38 +124,16 @@
         <div id="theaterCategoryContainer">
           <div class="event-cards">
         <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
-        </div>
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
-        </div>
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
-        </div>
+              class="loader-container"
+              data-link="event.html"
+              role="button"
+              tabindex="0"
+            >
+              <div class="container">
+                <div class="loader"></div>
+                <div class="loading-text">Carregando eventos...</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -201,36 +142,14 @@
         <div id="exhibitionCategoryContainer">
           <div class="event-cards">
         <div
-          class="event-one-card"
+          class="loader-container"
           data-link="event.html"
           role="button"
           tabindex="0"
         >
           <div class="container">
             <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
-        </div>
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
-        </div>
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
+            <div class="loading-text">Carregando eventos...</div>
           </div>
         </div>
           </div>
@@ -241,41 +160,19 @@
         <div id="educationCategoryContainer">
           <div class="event-cards">
         <div
-          class="event-one-card"
+          class="loader-container"
           data-link="event.html"
           role="button"
           tabindex="0"
         >
           <div class="container">
             <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
+            <div class="loading-text">Carregando eventos...</div>
           </div>
         </div>
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
         </div>
-        <div
-          class="event-one-card"
-          data-link="event.html"
-          role="button"
-          tabindex="0"
-        >
-          <div class="container">
-            <div class="loader"></div>
-            <div class="loading-text">Carregando imagem...</div>
-          </div>
         </div>
-          </div>
-        </div>
-      </div>
+      </div>  
     </section>
     <div class="bg-box">
       <div class="headline-text">
@@ -288,6 +185,8 @@
         <div class="contact-button">Fale conosco</div>
         <img class="img-grafico" src="images/grafico.png" alt="Gráfico" />
       </div>
+    </div>
+    <div id="feedbackContainer">
     </div>
     <footer>
       <div class="footer-logo">
@@ -313,6 +212,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="./src/scripts/card.js"></script>
+    <script src="./src/scripts/card.js"></script>
   </body>
 </html>

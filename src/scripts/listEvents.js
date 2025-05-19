@@ -102,8 +102,8 @@ const handleFavorite = async (idEvent, icon, user) => {
 };
 
 const handleIcon = (icon, user, id) => {
-  const favorited = "./public/images/icons/favorited.png";
-  const notFavorited = "./public/images/icons/heart.png";
+  const favorited = "./images/icons/favorited.png";
+  const notFavorited = "./images/icons/heart.png";
 
   if (user) {
     if (user.favoritos) {

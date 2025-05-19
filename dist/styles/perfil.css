@@ -1,0 +1,154 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* distribui espaço entre título e botão */
+  padding: 10px 20px;
+  flex-wrap: wrap; /* permite quebra em telas menores */
+  gap: 10px;
+}
+
+.profile-header h1 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 10px 0 0 15px;
+  white-space: nowrap;
+  flex-shrink: 1;
+}
+
+.btn-primary {
+  font-family: "Montserrat", sans-serif;
+  background-color: #000842;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #011081;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  font-family: "Montserrat", sans-serif;
+  background-color: #ffffff;
+  color: #000842;
+}
+
+.btn-secondary:hover {
+  background-color: #f0f0f0;
+  color: #000842;
+}
+
+.btn-active {
+  background-color: #011081;
+  color: #ffffff;
+}
+
+.event-section {
+  padding: 0 40px;
+}
+
+.event-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 32px 0 20px 0;
+}
+
+.event-cards {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+footer {
+  display: flex;
+  margin-top: auto;
+  width: 100%;
+  height: 180px;
+  background: #000842;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 0;
+  border-radius: 90px 90px 0 0;
+  z-index: 9999;
+}
+
+.footer-logo {
+  position: relative;
+  right: 100px;
+  text-align: center;
+}
+
+.footer-logo-img {
+  max-width: 30%;
+  height: auto;
+}
+
+.social-icons {
+  color: white; /* Garantindo que os ícones sejam brancos */
+  position: absolute; /* Os ícones são posicionados absolutamente em relação à div pai */
+  bottom: 85px; /* Distância da parte inferior da div pai (ajustei para "para baixo") */
+  left: 25%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Garante o centro exato */
+  display: flex;
+  justify-content: center; /* Garante que os ícones fiquem alinhados */
+}
+
+.social-icons a {
+  color: inherit; /* Herda a cor branca do elemento pai */
+  text-decoration: none;
+  margin: 0 5px; /* Ajuste o espaçamento entre os ícones */
+}
+
+.social-icons i {
+  font-size: 30px;
+}
+
+.footer-line {
+  position: absolute;
+  left: 51%;
+  width: 1.25px;
+  height: 120px;
+  background-color: white;
+}
+
+.footer-links {
+  position: absolute;
+  left: 55vw; /* aumente conforme desejar */
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 8px;
+}
+
+.footer-links a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}

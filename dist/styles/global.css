@@ -14,6 +14,24 @@ a {
   color: #fff;
 }
 
+.breadcrumb {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 40px;
+}
+
+.breadcrumb i {
+  color: #414040;
+}
+.breadcrumb a {
+  color: #414040;
+  text-decoration: none;
+}
+
 form {
   padding: 10px;
 }

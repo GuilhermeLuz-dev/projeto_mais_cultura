@@ -13,7 +13,6 @@ export default defineConfig({
         form: resolve(__dirname, "form.html"),
         formEdit: resolve(__dirname, "formEditEvent.html"),
         register: resolve(__dirname, "register.html"),
-        dashboard: resolve(__dirname, "dashboard.html"),
         event: resolve(__dirname, "event.html"),
         category: resolve(__dirname, "category.html"),
         perfil: resolve(__dirname, "perfil.html"),

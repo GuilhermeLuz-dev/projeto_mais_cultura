@@ -32,15 +32,11 @@ form select {
 
 ul {
   display: flex;
-  list-style: none;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 li {
-  width: 24.25%;
-  margin-right: 1%;
-  padding: 10px;
-  border: 1px solid #000;
+  list-style: none;
 }
 
 img {

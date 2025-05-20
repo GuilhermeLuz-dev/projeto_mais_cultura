@@ -2,6 +2,10 @@ import { searchEvents } from "../firebase/firestore";
 import { getUserState } from "../firebase/auth";
 import { formatDate } from "../scripts/formatDatas.js";
 import { showFeedback } from "../main";
+import {
+  addEventToFavorites,
+  removeEventFromFavorites,
+} from "../firebase/firestore.js";
 
 const eventsContainer = document.getElementById(
   "entertainmentCategoryContainer"

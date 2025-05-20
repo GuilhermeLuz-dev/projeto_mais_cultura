@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | +Cultura</title>
+  <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/login.css"/>
   <link rel="stylesheet" href="styles/responsividade/r_login.css"/>
   <link rel="stylesheet" href="styles/global.css">
@@ -18,10 +19,16 @@
 
 <body class="layout-col full-height bg-white">
   <header>
-    <div class="logo">
-      <img src="images/maiscultura.png" alt="+cultura logo" class="logo-img" />
-    </div>
-  </header>
+      <a href="index.html">
+        <div class="logo">
+          <img
+            src="images/maiscultura.png"
+            alt="Logo do +cultura"
+            class="logo-img-header"
+          />
+        </div>
+      </a>
+    </header>
     <main class="grow layout-center padding-main">
       <div class="form-container">
         <h1 class="title">Login</h1>
@@ -45,17 +52,32 @@
 
         <div class="signup-prompt">
           <p class="text-muted">Ainda não tem uma conta?</p>
-          <a href="register.html"><button class="btn btn-secondary" onclick="location.href='register.html'">Cadastre-se</button></a>
+          <a href="register.html"><button class="btn btn-secondary">Cadastre-se</button></a>
         </div>
       </div>
     </main>
     <div id="feedbackContainer"></div>
     <footer>
-      <div class="footer-logo">
-        <img src="images/maiscultura.png" alt="Logo do +Cultura" class="footer-logo-img">
+      <div class="footer-icons-logo">
+        <div class="footer-logo">
+          <img
+            src="images/maiscultura.png"
+            alt="Logo do +Cultura"
+            class="footer-logo-img"
+          />
+        </div>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/maisculturavc" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://www.youtube.com/@maisculturavc" target="_blank"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </div>
       </div>
-      <div class="footer-line"> </div>
+      <div class="footer-line"></div>
       <div class="footer-links">
+        <a href="#">Quem somos?</a>
         <a href="#">Política de Privacidade</a>
         <a href="#">Termos de uso</a>
       </div>

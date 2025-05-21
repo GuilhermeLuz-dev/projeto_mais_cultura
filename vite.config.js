@@ -16,6 +16,8 @@ export default defineConfig({
         event: resolve(__dirname, "event.html"),
         category: resolve(__dirname, "category.html"),
         perfil: resolve(__dirname, "perfil.html"),
+        policy: resolve(__dirname, "policy.html"),
+        terms: resolve(__dirname, "terms.html"),
       },
     },
   },

@@ -1,0 +1,96 @@
+@media (max-width: 768px) {
+  html,
+  body {
+    height: auto; /* evita que a altura total seja forçada em telas pequenas */
+    display: block; /* mudar para block em telas pequenas pode ser necessário */
+  }
+
+  .logo-img-header {
+    position: absolute;
+    left: 5%;
+    height: 24px;
+  }
+
+  .profile-header {
+    display: flex;
+    flex-direction: column; /* Coloca os itens em coluna */
+    align-items: center; /* Centraliza os itens */
+    gap: 12px; /* Ajustável */
+    padding: 10px 20px; /* Controle de espaço interno */
+    margin-top: 10px;
+  }
+
+  .profile-header h1 {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .profile-header .btn-container {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap; /* Permite que os botões se ajustem lado a lado */
+    gap: 10px; /* Espaçamento entre os botões */
+  }
+
+  .btn-container {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+    padding: 15px 15px;
+    font-size: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    margin: 0;
+    width: 80px;
+    background-color: #000842;
+    color: #ffffff;
+  }
+
+  .btn-secondary {
+    background-color: #ffffff;
+    color: #000842;
+    margin: -2px 0 0 185px;
+  }
+
+  .event-card {
+    min-width: 250px; /* ou 220px, 260px... você escolhe o ideal */
+  }
+
+  .event-section {
+    padding: 0 10px; /* Reduz o padding lateral no mobile */
+  }
+
+  .btns-events-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .btns-events-container .btn {
+    width: 100%;
+  }
+
+  .event-title {
+    font-size: 14px;
+    margin: 20px 0 15px 0;
+  }
+
+  .event-info h3 {
+    font-size: 14px;
+    margin: 0 0 5px 0;
+  }
+
+  .event-info span {
+    font-size: 12px;
+    margin: 0;
+  }
+}

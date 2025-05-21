@@ -1,10 +1,6 @@
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    height: auto;
-    padding: 10px;
-    text-align: center;
-    position: relative;
+  .form-container {
+    width: 90%;
   }
 
   .logo-img {
@@ -23,20 +19,13 @@
     color: #ffffff;
   }
   .text-left {
-    position: absolute;
-    left: 735px;
     margin-top: 20px;
-    font-size: 1.125rem;
-    text-align: left;
-    position: absolute;
   }
 
   .text-muted {
     position: relative;
-    top: -20px;
     font-size: 0.8rem;
     text-align: center;
-    margin-top: 12rem; /* Ajuste conforme necessário */
     color: #4b5563;
   }
 
@@ -45,9 +34,11 @@
     font-weight: 500;
   }
 
+  .input-wrapper {
+    margin-bottom: 30px;
+  }
+
   .input-field {
-    position: relative;
-    left: 7%;
     width: 85%;
     padding: 0.75rem 1rem;
     border: 1px solid #d1d5db;
@@ -59,62 +50,14 @@
     box-shadow: 0 0 0 2px #3b82f6;
   }
 
-  .btn-primary {
-    position: relative;
-    top: -30px;
-    left: 15%;
-    width: 70%;
-    padding: 0.75rem 1rem;
-    margin-top: 95px;
-    background-color: #1e3a8a;
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 12px;
-    border: none;
-    border-radius: 9999px;
-    transition: all 0.2s;
-  }
   .btn-primary:hover {
     background-color: #1c3a7d;
     transform: translateY(-2px);
   }
 
-  .btn-secondary {
-    position: relative;
-    top: -30px;
-    display: block;
-    width: 25%;
-    height: auto;
-    margin: 0 auto;
-    margin-top: 20px;
-    padding: 0.625rem 0;
-    font-size: 0.7rem;
-    font-weight: 500;
-    border-radius: 9999px;
-    background-color: #1e3a8a;
-    color: #ffffff;
-    transition: all 0.2s;
-    border: none;
-    text-align: center;
-  }
-
   .btn-secondary:hover {
     background-color: #1c3a7d;
     transform: translateY(-2px);
-  }
-
-  .btn-google {
-    position: absolute;
-    left: 25%;
-    gap: 0.5rem;
-    width: 50%;
-    height: 40px;
-    padding: -20rem -20rem !important;
-    background-color: #ffffff;
-    border: 1px solid #d1d5db;
-    border-radius: 9999px;
-    margin-top: 1rem;
-    transition: all 0.2s;
   }
 
   .btn-google:hover {
@@ -155,50 +98,13 @@
   }
 
   .link-muted {
-    display: inline-block;
-    margin-left: -42.5rem;
-    text-decoration: none;
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     color: #4b5563;
     transition: color 0.2s;
   }
 
   .link-muted:hover {
     color: #2563eb;
-    text-decoration: underline;
-  }
-
-  .footer-logo img {
-    max-width: 110px !important;
-    height: auto;
-    margin-bottom: 0px !important;
-    margin-left: -35vw; /* Ajuste para centralizar */
-  }
-
-  .footer-line {
-    position: absolute;
-    left: 50%;
-    width: 1.25px;
-    height: 70px;
-    background-color: white;
-  }
-
-  .footer-links {
-    position: absolute;
-    left: 55vw; /* aumente conforme desejar */
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .footer-links a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    font-size: 10px !important; /* Ajuste para tamanho menor */
-  }
-
-  .footer-links a:hover {
     text-decoration: underline;
   }
 }

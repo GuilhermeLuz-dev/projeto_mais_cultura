@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/category.css" />
-    <link rel="stylesheet" href="styles/global.css" />
-    <link rel="stylesheet" href="styles/header.css" />
-    <link rel="stylesheet" href="styles/card_styles.css" />
-    <link rel="stylesheet" href="styles/loader.css" />
+    <title>Política de Privacidade | +Cultura</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <link rel="stylesheet" href="styles/policy.css" />
+    <link rel="stylesheet" href="styles/responsividade/r_policy.css" />
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/header.css" />
   </head>
   <body>
     <header>
@@ -25,12 +24,7 @@
           />
         </div>
       </a>
-      <div class="hamburger" id="hamburger-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <nav id="btns_header_container" class="header-buttons nav-menu">
+      <div id="btns_header_container" class="header-buttons">
         <a id="addEvent" href="form.html"
           ><button class="btn btn-primary">Crie seu evento</button></a
         >
@@ -45,34 +39,44 @@
             alt="Icone do usuário"
           /><span>User</span></a
         >
-      </nav>
-    </header>
-    <nav class="breadcrumb">
-      <a href="index.html"><i class="fa-solid fa-house"></i></a>
-      <i class="fa-solid fa-angle-right"></i>
-      <a href="perfil.html">Categoria</a>
-    </nav>
-    <section id="eventsByCategory" class="event-section">
-      <div id="categoryTitle" class="event-title"></div>
-      <div class="event-category">
-        <div id="entertainmentCategoryContainer">
-          <div class="event-cards">
-            <div
-              class="loader-container"
-              data-link="event.html"
-              role="button"
-              tabindex="0"
-            >
-              <div class="container">
-                <div class="loader"></div>
-                <div class="loading-text">Carregando Eventos...</div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </section>
-    <div id="feedbackContainer"></div>
+    </header>
+    <main>
+      <h1>Política de Privacidade</h1>
+      <p>
+        Esta Política de Privacidade explica como coletamos, usamos, armazenamos
+        e protegemos suas informações ao utilizar nossa plataforma.
+      </p>
+
+      <h2>1. Informações Coletadas</h2>
+      <p>
+        1.1 Dados Pessoais: Nome, e-mail, telefone e outras informações
+        fornecidas no cadastro.
+      </p>
+      <p>1.2 Dados de Uso: Informações sobre navegação na plataforma.</p>
+      <p>1.3 Cookies: Utilizamos cookies para melhorar sua experiência.</p>
+
+      <h2>2. Uso das Informações</h2>
+      <p>2.1 Divulgar eventos culturais de forma personalizada.</p>
+      <p>2.2 Enviar novidades e atualizações.</p>
+      <p>2.3 Garantir a segurança dos usuários.</p>
+
+      <h2>3. Compartilhamento de Dados</h2>
+      <p>3.1 Apenas quando necessário para prestação de serviços.</p>
+
+      <h2>4. Seus Direitos</h2>
+      <p>Acesso, correção e exclusão de dados.</p>
+
+      <h2>5. Retenção de Dados</h2>
+      <p>Reter dados pelo tempo necessário para finalidades descritas.</p>
+
+      <h2>6. Alterações na Política</h2>
+      <p>Esta política pode ser atualizada.</p>
+
+      <h2>7. Contato</h2>
+      <p>Para dúvidas: maisculturavc@gmail.com</p>
+    </main>
+
     <footer>
       <div class="footer-icons-logo">
         <div class="footer-logo">
@@ -98,7 +102,7 @@
         <a href="terms.html">Termos de uso</a>
       </div>
     </footer>
+
     <script type="module" src="src/pages/header.js"></script>
-    <script type="module" src="src/pages/category.js"></script>
   </body>
 </html>

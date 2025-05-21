@@ -43,5 +43,12 @@ const updatePageState = async () => {
   }
 };
 
+const hamburger = document.getElementById("hamburger-menu");
+const navMenu = document.getElementById("btns_header_container");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
 // Verificando se há usuário logado
 document.addEventListener("DOMContentLoaded", updatePageState);

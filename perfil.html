@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./styles/card_styles.css" />
     <link rel="stylesheet" href="./styles/loader.css" />
     <link rel="stylesheet" href="./styles/perfil.css" />
-    <link rel="stylesheet" href="css/responsividade/r_perfil.css" />
+    <link rel="stylesheet" href="styles/responsividade/r_perfil.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -26,7 +26,12 @@
           />
         </div>
       </a>
-      <div id="btns_header_container" class="header-buttons">
+      <div class="hamburger" id="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav id="btns_header_container" class="header-buttons nav-menu">
         <a id="addEvent" href="form.html"
           ><button class="btn btn-primary">Crie seu evento</button></a
         >
@@ -41,7 +46,7 @@
             alt="Icone do usuário"
           /><span>User</span></a
         >
-      </div>
+      </nav>
     </header>
     <main>
       <section>
@@ -55,7 +60,6 @@
           </div>
         </div>
       </section>
-
       <hr class="my-8 border-gray" />
 
       <nav class="breadcrumb">
@@ -95,8 +99,8 @@
       <div class="footer-line"></div>
       <div class="footer-links">
         <a href="#">Quem somos?</a>
-        <a href="#">Política de Privacidade</a>
-        <a href="#">Termos de uso</a>
+        <a href="policy.html">Política de Privacidade</a>
+        <a href="terms.html">Termos de uso</a>
       </div>
     </footer>
     <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->

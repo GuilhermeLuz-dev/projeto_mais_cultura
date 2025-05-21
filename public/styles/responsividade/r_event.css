@@ -1,0 +1,10 @@
+@media (max-width: 760px) {
+  .event-header {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .section-policy {
+    width: 100%;
+  }
+}

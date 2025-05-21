@@ -1,0 +1,93 @@
+@media (max-width: 768px) {
+  .info-basic,
+  .data-horario,
+  .localizacao,
+  .ingresso,
+  .organizador,
+  .responsabilidade {
+    font-size: 10px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .input-select {
+    font-size: 10px;
+  }
+
+  .titulo-principal {
+    font-size: 14px;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .titulo-informacoes,
+  .titulo-data-horario,
+  .titulo-localizacao,
+  .titulo-ingresso,
+  .titulo-organizador,
+  .titulo-responsabilidade {
+    font-size: 14px;
+  }
+
+  .upload-imagem {
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    gap: 20px;
+  }
+
+  .upload-label {
+    width: 90%;
+    height: 150px;
+    font-size: 10px;
+    margin-left: 0;
+  }
+
+  .texto-tamanho-arquivo {
+    width: 90%;
+    height: auto;
+    font-size: 10px;
+    margin: auto;
+  }
+
+  .data-horario-informacoes,
+  .localizacao-info-mapa,
+  .ingresso-informacoes {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .label-localizacao input,
+  .label-ingresso input,
+  .label-organizador input {
+    font-size: 10px;
+    width: 100%;
+  }
+
+  .label-data input,
+  .label-hora input {
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #000842;
+    background-color: #f1f1f1;
+    padding: 15px;
+    margin-top: 10px;
+  }
+
+  .localizacao-mapa {
+    width: 100%;
+    height: 200px;
+  }
+
+  .botao-cadastrar,
+  .botao-ingresso {
+    font-size: 10px;
+    width: 100%;
+    max-width: 140px;
+    height: 40px;
+    margin: 10px auto;
+  }
+}

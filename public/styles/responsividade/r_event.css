@@ -7,4 +7,9 @@
   .section-policy {
     width: 100%;
   }
+
+  .organizer {
+    flex-direction: column;
+    gap: 20px;
+  }
 }

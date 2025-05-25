@@ -33,6 +33,7 @@ body {
 
 .swiper-slide {
   position: relative;
+  cursor: pointer;
 }
 
 .swiper-slide img {

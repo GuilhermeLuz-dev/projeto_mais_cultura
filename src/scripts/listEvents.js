@@ -57,6 +57,10 @@ const listFeaturedEvents = async (eventsList) => {
     img.src = event.imagemUrl;
 
     slide.id = event.id;
+    slide.addEventListener("click", () => {
+      window.location.href = `event.html?id=${event.id}`;
+      console.log("teste");
+    });
 
     slide.append(img, pDesc);
 

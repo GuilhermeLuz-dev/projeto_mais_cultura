@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | +Cultura</title>
+  <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/login.css"/>
   <link rel="stylesheet" href="styles/responsividade/r_login.css"/>
-  <link rel="stylesheet" href="styles/global.css">
    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -47,17 +47,18 @@
           <div class="text-left">
             <a href="#" class="link-muted">Esqueceu sua senha?</a>
           </div>
-          <button id="btn_login" type="button"  class="btn-primary">Entrar</button>
         </form>
-        <div class="social-login">
-          <button id="button_login_google" type="button" class="btn-google">           
-              Continue com<img src="images/login/google.png" alt="Google" class="icon">
-          </button>
-        </div>
-
-        <div class="signup-prompt">
-          <p class="text-muted">Ainda não tem uma conta?</p>
-          <a href="register.html"><button class="btn btn-secondary">Cadastre-se</button></a>
+        <div class="btns-container">
+          <button id="btn_login" type="button"  class="btn-primary">Entrar</button>
+          <div class="social-login">
+            <button id="button_login_google" type="button" class="btn-google">
+                Continue com<img src="images/login/google.png" alt="Google" class="icon">
+            </button>
+          </div>
+          <div class="signup-prompt">
+            <p class="text-muted">Ainda não tem uma conta?</p>
+            <a href="register.html"><button class="btn btn-secondary">Cadastre-se</button></a>
+          </div>
         </div>
       </div>
     </main>
@@ -83,8 +84,8 @@
       <div class="footer-line"></div>
       <div class="footer-links">
         <a href="#">Quem somos?</a>
-        <a href="#">Política de Privacidade</a>
-        <a href="#">Termos de uso</a>
+        <a href="policy.html">Política de Privacidade</a>
+        <a href="terms.html">Termos de uso</a>
       </div>
     </footer>
   </div>

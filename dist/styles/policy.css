@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+html {
+  font-size: 12px; /* base para usar rem */
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.main-content {
+  flex: 1;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+main {
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  max-width: 1000px;
+  background: white;
+  margin: 60px auto 60px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin: 18px 0;
+}
+
+h2 {
+  margin: 17px 0;
+}
+
+p {
+  margin: 14px 0;
+}

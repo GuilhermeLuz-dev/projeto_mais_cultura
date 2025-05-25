@@ -32,10 +32,6 @@ a {
   text-decoration: none;
 }
 
-form {
-  padding: 10px;
-}
-
 form input,
 form select {
   display: block;
@@ -157,4 +153,29 @@ footer {
 
 .footer-links a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-icons-logo {
+    align-items: center;
+  }
+
+  .footer-logo img {
+    max-width: 120px;
+  }
+
+  .social-icons {
+    gap: 10px;
+  }
+
+  .footer-line {
+    width: 1px;
+    height: 80px;
+  }
 }

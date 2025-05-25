@@ -1,99 +1,10 @@
-@media (max-width: 768px) {
-  html {
-    font-size: 14px; /* texto um pouco menor */
-  }
-
-  .logo {
-    font-size: 20px;
-  }
-
-  .logo-img-header {
-    height: 20px;
-  }
-
-  .header-buttons {
-    flex-direction: column;
-    width: 100%;
-    gap: 8px;
-  }
-
-  .container {
-    padding: 20px;
-    gap: 20px;
-  }
-
+@media (max-width: 760px) {
   .event-header {
-    background-color: red;
     flex-direction: column;
+    gap: 30px;
   }
 
-  .event-header img {
-    width: 90px;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .event-info {
-    width: 10px;
-    padding-left: 20px;
-  }
-
-  .event-info h2 {
-    font-size: 16px;
-  }
-
-  .event-info p {
-    font-size: 11px !important;
-  }
-
-  .event-date {
-    font-size: 18px;
-  }
-
-  .event-details {
-    flex-direction: column;
-    align-items: center;
-    left: 0;
-    padding-left: 0;
-  }
-
-  .section-policy h3,
-  p,
-  li {
-    font-size: 14px !important;
-  }
-
-  .section-policy,
-  .map-content {
+  .section-policy {
     width: 100%;
-    max-width: 100%;
-    margin-left: 0;
-  }
-
-  .map-content {
-    margin-top: 20px;
-  }
-
-  .button-ticket {
-    width: 90%;
-    font-size: 12px;
-  }
-
-  .organizer {
-    flex-direction: column;
-    align-items: center;
-    margin: 0 20px 50px 20px;
-    text-align: center;
-  }
-
-  .organizer-img {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .organizer-info h3 {
-    margin-left: 0;
-    text-align: center;
   }
 }

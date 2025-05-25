@@ -19,6 +19,7 @@ html {
 body {
   background-color: #fff;
   color: #000;
+  overflow-x: hidden;
 }
 .main-content {
   flex: 1;
@@ -38,6 +39,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center; /* Centralizar a imagem */
 }
 
 .swiper-slide-tech img {
@@ -173,12 +175,14 @@ body {
 }
 
 .bg-box {
-  position: relative;
+  display: flex;
+  align-items: center;
   margin: 5rem auto;
   margin-bottom: 100px;
   width: 100%;
   max-width: 80rem;
-  min-height: 30rem;
+  height: 100%;
+  max-height: 350px;
   background-color: rgba(0, 89, 255, 0.08);
   padding: 2rem;
   border-radius: 1.5rem;
@@ -186,47 +190,37 @@ body {
 }
 
 .headline-text {
-  position: relative;
-  top: 50px;
-  left: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   font-size: 40px;
   line-height: 110%;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 2.75rem;
   color: #000842;
-  word-wrap: break-word;
-  text-align: left; /* Centralizar no desktop */
 }
 
 .contact-text {
+  width: 100%;
   color: #00052c;
   font-size: 20px;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   word-wrap: break-word;
   position: relative;
-  top: -15px;
-  left: 0;
   margin-top: 2rem; /* Ajuste o espaçamento para o texto */
   text-align: left; /* Centralizar no desktop */
 }
 
 .img-grafico {
-  position: relative;
-  display: block; /* Garantir que a imagem seja tratada como um bloco */
-  max-width: 50%; /* Limita a largura máxima a 70% */
-  width: 100%; /* Faz com que a largura da imagem seja proporcional ao seu contêiner */
-  height: auto; /* Mantém a proporção da imagem */
-  border-radius: 4rem;
-  margin-left: 500px;
-  margin-top: -325px;
+  margin-right: -50px;
+  height: 400px;
 }
 
 .contact-button {
   position: relative;
-  top: -15px;
-  left: 135px;
   display: flex;
   align-items: center;
   justify-content: center;

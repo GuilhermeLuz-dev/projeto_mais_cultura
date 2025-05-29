@@ -23,6 +23,8 @@ const complemento = document.getElementById("complemento");
 const nomeLocal = document.getElementById("nomeLocal");
 const name = document.getElementById("organizerName");
 const desc = document.getElementById("organizerDesc");
+const telOrganizer = document.getElementById("organizerTel");
+const mailOrganizer = document.getElementById("organizerMail");
 
 const handleFeedback = (message, type) => {
   feedbackContainer.innerHTML = "";
@@ -79,8 +81,51 @@ const getOrganizerData = () => {
   return organizerData;
 };
 
+const validateEventData = () => {
+  if (!titulo.value.trim()) {
+    handleFeedback("O título é obrigatório.", "alert");
+    return false;
+  }
+  if (!descricao.value.trim()) {
+    handleFeedback("A descrição é obrigatória.", "alert");
+    return false;
+  }
+  if (!telOrganizer.value.trim()) {
+    handleFeedback("O telefone do organizador é obrigatória.", "alert");
+    return false;
+  }
+  if (!mailOrganizer.value.trim()) {
+    handleFeedback("O Email do organizador é obrigatória.", "alert");
+    return false;
+  }
+  if (
+    !cidade.value.trim() ||
+    !bairro.value.trim() ||
+    !logradouro.value.trim() ||
+    !numero.value.trim()
+  ) {
+    handleFeedback(
+      "Todos os campos de endereço obrigatórios devem ser preenchidos.",
+      "alert"
+    );
+    return false;
+  }
+  if (!nomeLocal.value.trim()) {
+    handleFeedback("O nome do local é obrigatório.", "alert");
+    return false;
+  }
+  if (!name.value.trim()) {
+    handleFeedback("O nome do organizador é obrigatório.", "alert");
+    return false;
+  }
+  return true;
+};
+
 // Adicionando novo evento
 buttonAdd.addEventListener("click", async (e) => {
+  if (!validateEventData()) {
+    return;
+  }
   handleFeedback("Adicionando evento...", "info");
   const tituloValue = titulo.value;
   const descricaoValue = descricao.value;
@@ -101,6 +146,8 @@ buttonAdd.addEventListener("click", async (e) => {
     organizer: organizerData,
     userUID: userUID.uid,
     emDestaque: false,
+    telOrganizer: telOrganizer.value,
+    mailOrganizer: mailOrganizer.value,
   };
 
   if (fileInput.files[0]) {

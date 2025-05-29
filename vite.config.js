@@ -18,6 +18,7 @@ export default defineConfig({
         perfil: resolve(__dirname, "perfil.html"),
         policy: resolve(__dirname, "policy.html"),
         terms: resolve(__dirname, "terms.html"),
+        about: resolve(__dirname, "about.html"),
       },
     },
   },

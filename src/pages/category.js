@@ -124,6 +124,7 @@ const listEventsByCategory = async (events) => {
 document.addEventListener("DOMContentLoaded", async () => {
   const category = new URLSearchParams(window.location.search);
   const events = await searchEvents("categoria", category.get("category"));
+  console.log(events);
   title.innerHTML = category.get("desc");
   if (events.length == 0) {
     handleFeedback("Nenhum evento encontrado.", "alert");

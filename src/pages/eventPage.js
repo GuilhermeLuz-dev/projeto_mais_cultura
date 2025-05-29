@@ -10,6 +10,8 @@ const imageEvent = document.getElementById("imageEvent");
 const eventDescription = document.getElementById("eventDescription");
 const organizerName = document.getElementById("organizerName");
 const organizerDesc = document.getElementById("organizerDesc");
+const organizerTel = document.getElementById("organizerTel");
+const organizerEmail = document.getElementById("organizerEmail");
 const startDate = document.getElementById("startDate");
 const endDate = document.getElementById("endDate");
 const startTime = document.getElementById("startTime");
@@ -42,5 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   eventDescription.innerText = event.descricao;
   organizerName.innerText = event.organizer.name;
   organizerDesc.innerText = event.organizer.desc;
+  organizerTel.innerText = event.organizer.telOrganizer || "Não informado!";
+  organizerEmail.innerText = event.organizer.mailOrganizer || "Não informado!";
   getDateTime(event);
 });

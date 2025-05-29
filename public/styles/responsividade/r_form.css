@@ -82,6 +82,11 @@
     height: 200px;
   }
 
+  .btns-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
   .botao-cadastrar,
   .botao-ingresso {
     font-size: 10px;

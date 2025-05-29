@@ -5,12 +5,6 @@
     display: block; /* mudar para block em telas pequenas pode ser necessário */
   }
 
-  .logo-img-header {
-    position: absolute;
-    left: 5%;
-    height: 24px;
-  }
-
   .profile-header {
     display: flex;
     flex-direction: column; /* Coloca os itens em coluna */

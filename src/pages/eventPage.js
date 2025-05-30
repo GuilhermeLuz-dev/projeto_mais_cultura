@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   eventDescription.innerText = event.descricao;
   organizerName.innerText = event.organizer.name;
   organizerDesc.innerText = event.organizer.desc;
-  organizerTel.innerText = event.organizer.telOrganizer || "Não informado!";
-  organizerEmail.innerText = event.organizer.mailOrganizer || "Não informado!";
+  organizerTel.innerText = event.organizer.tel;
+  organizerEmail.innerText = event.organizer.mail;
   getDateTime(event);
 });

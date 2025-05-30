@@ -26,6 +26,42 @@ const desc = document.getElementById("organizerDesc");
 const telOrganizer = document.getElementById("organizerTel");
 const mailOrganizer = document.getElementById("organizerMail");
 
+const validateEventData = () => {
+  if (!titulo.value.trim()) {
+    handleFeedback("O título é obrigatório.", "alert");
+    return false;
+  }
+  if (!descricao.value.trim()) {
+    handleFeedback("A descrição é obrigatória.", "alert");
+    return false;
+  }
+  if (!telOrganizer.value.trim()) {
+    handleFeedback("O telefone do organizador é obrigatória.", "alert");
+    return false;
+  }
+  if (
+    !cidade.value.trim() ||
+    !bairro.value.trim() ||
+    !logradouro.value.trim() ||
+    !numero.value.trim()
+  ) {
+    handleFeedback(
+      "Todos os campos de endereço obrigatórios devem ser preenchidos.",
+      "alert"
+    );
+    return false;
+  }
+  if (!nomeLocal.value.trim()) {
+    handleFeedback("O nome do local é obrigatório.", "alert");
+    return false;
+  }
+  if (!name.value.trim()) {
+    handleFeedback("O nome do organizador é obrigatório.", "alert");
+    return false;
+  }
+  return true;
+};
+
 const handleFeedback = (message, type) => {
   feedbackContainer.innerHTML = "";
   feedbackContainer.appendChild(showFeedback(message, type));
@@ -78,47 +114,9 @@ const getOrganizerData = () => {
   const organizerData = {};
   organizerData.name = name.value;
   organizerData.desc = desc.value;
+  organizerData.tel = telOrganizer.value;
+  organizerData.mail = mailOrganizer.value;
   return organizerData;
-};
-
-const validateEventData = () => {
-  if (!titulo.value.trim()) {
-    handleFeedback("O título é obrigatório.", "alert");
-    return false;
-  }
-  if (!descricao.value.trim()) {
-    handleFeedback("A descrição é obrigatória.", "alert");
-    return false;
-  }
-  if (!telOrganizer.value.trim()) {
-    handleFeedback("O telefone do organizador é obrigatória.", "alert");
-    return false;
-  }
-  if (!mailOrganizer.value.trim()) {
-    handleFeedback("O Email do organizador é obrigatória.", "alert");
-    return false;
-  }
-  if (
-    !cidade.value.trim() ||
-    !bairro.value.trim() ||
-    !logradouro.value.trim() ||
-    !numero.value.trim()
-  ) {
-    handleFeedback(
-      "Todos os campos de endereço obrigatórios devem ser preenchidos.",
-      "alert"
-    );
-    return false;
-  }
-  if (!nomeLocal.value.trim()) {
-    handleFeedback("O nome do local é obrigatório.", "alert");
-    return false;
-  }
-  if (!name.value.trim()) {
-    handleFeedback("O nome do organizador é obrigatório.", "alert");
-    return false;
-  }
-  return true;
 };
 
 // Adicionando novo evento
@@ -146,8 +144,6 @@ buttonAdd.addEventListener("click", async (e) => {
     organizer: organizerData,
     userUID: userUID.uid,
     emDestaque: false,
-    telOrganizer: telOrganizer.value,
-    mailOrganizer: mailOrganizer.value,
   };
 
   if (fileInput.files[0]) {
@@ -170,7 +166,6 @@ buttonAdd.addEventListener("click", async (e) => {
 
   if (e.target.textContent == "Salvar Edição") {
     const currentEvent = await getCurrentEvent();
-    console.log(currentEvent);
     if (newEvent.imageName) {
       await changeImage(fileInput.files[0], currentEvent.imageName);
     }
@@ -207,5 +202,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     nomeLocal.value = event.endereco.nomeLocal;
     name.value = event.organizer.name;
     desc.value = event.organizer.desc;
+    telOrganizer.value = event.organizer.tel || "Não foi informado";
+    mailOrganizer.value = event.organizer.mail || "Não foi informado";
   }
 });
